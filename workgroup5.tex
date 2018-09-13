@@ -1,0 +1,90 @@
+
+\abstracttitle{Algorithmic Challenges at Scale}
+\abstractauthor[Christoph Garth and David Pugmire]{%
+Christoph Garth (...)\\
+David Pugmire (...)
+}
+\license
+
+\textbf{\sffamily Participants:} C. Garth, D. Pugmire, T. Carrard, B. Muite, K. Moreland, U. Rüde, R. Sisneros, D. Pugmire, H. Yu, H.-W. Shen, G. Weber, I. Hotz, R. Westermann, J. Krüger, M. Hadwiger, P. Messmer
+
+\medskip\noindent
+\textbf{\sffamily Background and Motivation.} The utility of in situ visualization and analysis fundamentally hinges on the ability to respond to both the size, and nature of simulation data. In-place methods will need to efficiently utilize similar levels of concurrency as the mechanism for generation of the data (i.e. simulation), while in transit methods will need to dedicate enough computational power to process the transferred data. Further, algorithms must be able to operate on disparate data representations (e.g. higher order elements) in a memory efficient manner, and for in place methods particularly, must respect the sharing of resources.
+
+These requirements make in situ algorithm design and engineering challenging for the extremely concurrent architectures of the near future. The need for integration into and coupling to existing ecosystems, the presence of heterogeneous architectures as well as sharing of non-optimal or even unsuitable data structures provide a substantial challenge in obtaining efficient performance. As a consequence, some forms of analysis that are in widespread use today may not even be feasible for future problems.
+
+In spite of these challenges, there are several noteworthy successes with adapting visualization techniques to in situ scenarios at scale. For example, volume rendering has been successfully scaled to millions of cores in an in situ scenario. The same holds true for isosurface extraction and strongly localized feature extraction techniques. These successes make it a worthwhile goal to continue research into the formulation of in situ algorithms for future architectures and applications to ensure that future computational science pipelines can make use of a rich toolbox of appropriate analysis methodologies. Failure to achieve this stands to strongly limit the potential for insight into the complex underlying scientific problems.
+
+As a central goal, a general understanding of the principles underlying these considerations, as opposed to a case-by-case analysis, would substantially ease the adaptation of techniques to new in situ scenarios and enable the development of new analysis strategies, thus increasing the productivity and robustness of computational science workflows.
+
+\medskip\noindent\textbf{\sffamily Research Questions.} 
+We identify the following general research questions that are central to engineering and designing algorithm for an in situ ecosystem:
+\begin{enumerate}
+\item How can in situ ecosystems be characterized sufficiently to inform algorithm design? Which parameters (such as concurrency, memory requirements, heterogeneity), modalities (e.g. data type, data locality, partitioning and layout schemes, communication layout, in transit facilities, memory hierarchy), and available resources (compute, memory, I/O bandwidth) are important in this context?
+\item How can algorithms be designed to optimally leverage different aspects of an in situ system (in situ, in transit, post hoc)? What are general strategies to this effect?
+\item Are there specific resources (e.g. half-precision hardware operations) or data types (e.g. higher-order elements) that future in situ analysis algorithms can leverage to substantial benefit? I.e. how can an analysis algorithm be optimally (but realistically) accommodated by its environment?
+\item Which alternative formulations of typical visualization algorithms are better suited for future in situ ecosystems? (For example, convolution-type algorithms are expected to work well on exascale systems – can these replace particle-tracing flow visualization?)
+\item Can compression or data reduction (e.g. distribution-based descriptions) be used to increase the scalability and efficiency of in situ analysis algorithms? In the case of lossy representation, how can the trade-offs with respect to accuracy be quantified.
+\item How do the above considerations change if in situ interactive exploration (mandating short response times)  is considered, e.g. for computational steering applications?
+\item Looking beyond classical use cases for field data, how can analysis other data types (such as e.g. streaming data) be incorporated into this characterization?
+\end{enumerate}
+
+\medskip\noindent\textbf{\sffamily References.} TODO: add back in.
+
+% \subsubsection*{What is the problem?}
+
+% The utility of in situ visualization and analysis for state-of-the-art problems fundamentally hinges on the ability to respond to both the size, and nature of simulation data. In place methods will need to efficiently utilize similar levels of concurrency as the mechanism for generation of the data (i.e. simulation), while in transit methods will need to dedicate enough computational power to process the transferred data.  Further, algorithms must be able to operate on disparate data representations (e.g. higher order elements) in a memory efficient manner, and for in place methods particularly, must respect the sharing of resources.
+
+% \subsubsection*{Why is it challenging?}
+
+% Designing and engineering in situ visualization and analysis algorithms for extremely concurrent architectures, where the need for such analysis is most pressing, is challenging on a variety of levels.
+
+% \begin{itemize}
+% \item Algorithms need to integrate into a complex ecosystem formed by the combination of simulation codes and heterogeneous architectures. This includes sharing data with the simulation, and thus working with foreign data structures and partitioning schemes, memory requirements, as well unsuitable or even unknown data locality. This will make it difficult to execute optimal analysis algorithm designs efficiently.
+% \item The coupled nature of in situ processing also enforces specific access patterns that may be unsuitable an analysis algorithm; using memory to store needed data is typically not possible. For the typical case of e.g. sequential-in-time coupling, commonly used algorithms like feature tracking appear difficult or even impossible to realize. Moreover, in complex analyses, several algorithms may require entirely different data layouts to function with acceptable efficiency.
+% \item In many applications, analysis workloads are in many cases more diverse than the primary (i.e. simulation) workload, yet have to be adapted to the environment provided by the simulation. It is unclear how algorithm design can account for such heterogeneous runtime environments effectively.
+% \item Most fundamentally, looking ahead to future architectures, where the need for in situ analysis will be most pressing, algorithms with strongly sublinear scaling and/or global access patterns (e.g. topological analysis that is global in nature) may not even be feasible to use due to prohibitive cost of communication. 
+% \end{itemize}
+
+% While some paradigms such as in transit processing can alleviate some of these problems, the fundamental problem of designing scalable algorithms of a strongly adaptive nature remains. As a consequence, some forms of analysis that are in widespread use today may not even be feasible for future problems.
+
+% Consider for example the case of particle tracing to produce streamlines or pathlines for the visualization of vector fields, e.g. in the study of turbulence. The generally imbalanced nature of the computation that results from the data itself induces strong limits on scalability in straightforward algorithms[PCW09]. While load-balancing through data redistribution can address this issue[NLS11], this may be very costly in practice. A further often used class of algorithms are variants of topological analysis for feature identification that have proved essential in several important applications such as combustion analysis or halo identification in computational cosmology. These algorithms are used to compute connected components in the simplest case, up to full computation of the Morse-Smale complex, and essentially require global exchange of information for correctness [???] that appears difficult if current trends continue. In both cases, it would appear possible to address these issues through e.g. reduced-concurrency in transit processing or careful data reduction strategies.
+
+% Taking a broader view, exploratory analysis, which in addition to the above requirements must provide results in seconds, can in general can be made to fit these criteria.
+
+% \subsubsection*{What has been done (i.e., successes to date)?}
+
+% It is difficult to define a general criterion for declaring a general visualization technique or specific algorithm applicable to  in situ. One measure of success in this regard is precedent for the use of such an algorithm to address a science question at scale. (Other, much more difficult to satisfy criteria could rely on theoretical algorithm analysis or empirical performance models that predict acceptable properties.)
+
+% Considering this criterion, there are several noteworthy successes with adapting visualization techniques to in situ scenarios at scale. For example, volume rendering (and other ray casting-based and rasterization-based rendering techniques) has been successfully scaled to millions of cores in an in situ scenario [???]. The communication patterns underlying rendering algorithms are well understood, local, and can flexibly accommodate data layouts in many cases. The same holds true for isosurface extraction [???] and strongly localized feature extraction techniques.
+
+% Furthermore, in some instances it is possible to decompose a particular analysis scenario into a component that is conceivably easily adapted to an in situ mode that produces an intermediate representation plus a post hoc component that facilitates analysis; for example, using a Lagrangian basis to represent vector fields [AC*C14]. (More examples needed.)
+
+% \subsubsection*{What are the open research questions?}
+
+% Based on the above observation, we identify the following general research questions that are central to engineering and designing algorithm for an in situ ecosystem:
+
+% \begin{enumerate}
+% \item How can in situ ecosystems be characterized sufficiently to inform algorithm design? Which parameters (such as concurrency, memory requirements, ...), modalities (e.g. data type, partitioning and layout schemes, communication layout, in transit facilities, memory hierarchy, ...), and available resources (memory, I/O bandwidth, …) are important in this context?
+% \item Are there specific resources (e.g. half-precision hardware operations) or data types (e.g. higher-order elements) that future in situ analysis algorithms can leverage to substantial benefit? I.e. how can an analysis algorithm be optimally accommodated by the environment?
+% \item How can requirements regarding the above parameters, modalities, and resources be formulated in a general enough manner that it is possible to understand how to  accommodate them in an existing ecosystem?
+% \item How can algorithms be designed to optimally leverage different aspects of an in situ system (in situ, in transit, post hoc)? What are general strategies to this effect?
+% \item Which alternative formulations of typical visualization algorithms are better suited for future in situ ecosystems? (For example, convolution-type algorithms are expected to work well on exascale systems – can these replace particle-tracing flow visualization?)
+% \item Can compression or data reduction (e.g. distribution-based descriptions) be used to increase the scalability and efficiency of in situ analysis algorithms? In the case of lossy representation, how can the trade-offs with respect to accuracy be quantified.
+% \item How do the above considerations change if in situ interactive exploration (mandating short response times)  is considered, e.g. for computational steering applications?
+% \item Looking beyond classical use cases for field data, how can analysis other data types (such as e.g. streaming data) be incorporated into this characterization?
+% \end{enumerate}
+
+% \noindent We note that Question 6 strongly interacts with the research questions raised in the working group on ``Data Quality and Compression''.
+
+% \subsubsection*{What are the benefits of solving this problem?}
+
+% Addressing these questions will ensure that future computational science pipelines can make use of a rich toolbox of appropriate analysis methodologies. Failure to achieve this stands to strongly limit the potential for insight into the complex underlying scientific problems.
+
+% Furthermore, a general understanding of the principles underlying these considerations would substantially ease the adaptation of techniques to new in situ scenarios as well as enable the development of new analysis strategies, thus increasing the productivity and robustness of computational science workflows.
+
+% \begin{thebibliography}{0}
+% \bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
+% \bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
+% \end{thebibliography}
+

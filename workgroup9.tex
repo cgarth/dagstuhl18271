@@ -1,4 +1,3 @@
-
 \abstracttitle{HPC \& Big Data}
 \abstractauthor[Bruno Raffin and Benson Muite]{%
 Bruno Raffin (...)\\
@@ -8,12 +7,104 @@ Benson Muite (...)
 
 \textbf{\sffamily Participants:} B. Raffin, W. Bethel, C. Hansen, I. Hotz, N. Gauger, H.-W. Shen, M. Srinivasan, B. Muite, K. Moreland, K. Ono, D. Pleiter, A.R. Cortes, R. Sisneros, G. Weber, R. Westerman, K.E. Isaacs, H. Yu
 
-\bigskip\noindent
-Lorem ipsum
+\medskip\noindent
+\textbf{\sffamily Background and Motivation.}
+
+Due to the fact that this topic is based on two rapidly evolving fields, an appropriate definition and scoping are still in development~\cite{AA18}. 
+Big Data as a domain has developed its own solutions for machine architectures, software frameworks, and also specific methodologies for data processing, e.g., the map/reduce model or stream processing, descriptive statistics and predictive statistics such as machine learning (ML) algorithms and in particular the subset of ML, deep learning (DL). 
+We believe that it is too narrow to only list popular Big Data frameworks such as Spark, Hadoop, Flink, and to compare them to MPI or PGAS languages used in high performance computing.
+Instead, identifying a set of candidate use cases and applications to experiment with different aspects of a future convergence will enable better evaluation of the potential and limitations of each approach. 
+A key problem is to understand how Big Data processing approaches can be used for in situ visualization and vice versa, i.e.~explore whether in situ solutions can find relevant applications in a Big Data context.
+Big Data is associated with machine learning, in particular neural networks. 
+ML techniques have been successful for addressing a number of classification/optimization problems. 
+How these techniques could be used efficiently in an in situ context still needs to be explored, with the an important question being the identification of the data that needs to be extracted to enable learning.  
+Many machine learning approaches can take a long time to be trained, usually with offline data. 
+Thus, other techniques from optimization should also be considered to enable real time in situ processing by coupling fast algorithms with fast implementations.
+
+Another area of interest is co-design for in situ big data analysis. 
+In cases of key interest (such as in transit analysis of telecommunication network data~\cite{GCC16}, dedicated hardware is often used, and experiences from the in situ case can be used to aid this co design.  
+Many high performance computing centers, under user requests, now need to provision frameworks such as Spark, Hadoop, Flink on high performance computing hardware. 
+In Situ processing can leverage this trend to experiment and integrate Big Data solutions in workflows. 
+At present, in situ visualization has primarily focused on visualizing results of continuum mechanics simulations.
+Links to other communities with different types of streaming data that cannot be stored to disk may help in the development of new techniques and workflows~\cite{A18,GCC16}.
+
+The diversity, size, and complexity of data in HPC is growing. 
+In situ processing needs to consider not only data produced by large scale applications, but also data provided online by other scientific instruments or to combine observation data stored on disk (data assimilation)~\cite{A18}. 
+This type of workflow may require the combination of different tools from HPC and Big Data, making for a very heterogeneous software stack. 
+Modular supercomputers may be a good place for initial experimentation with workflows that have in transit processing since the deployed software stacks on each modular component are under the control of one center.
+Big Data frameworks are not designed to run efficiently on current large high performance computing architectures, limiting their usability at scale for in situ analytics. 
+Ease of use has typically been prioritized over efficiency. They do however inspire adaptation of HPC frameworks to allow for both ease of use and efficiency~\cite{PD11}.
+ML and more particularly DL are black box solutions. 
+Given enough high quality data for learning, they can automatically produce good solutions without requiring the hand development of a complex model.
+However, the  computed surrogate model is often difficult to understand and the guarantees on its qualities are limited. 
+In many cases this may not be acceptable. 
+A surrogate model produced by ML may be used in an in situ workflow, for instance for feature tracking, but also for designing and optimizing in situ workflows. 
+Such a task is often  difficult, with very limited tools to assist the developer, often left to rely only on his experience and expertise. 
+ML could be an interesting tool to address this issue.
+
+Many big data workflows have been ported to HPC hardware and are available for users, in particular on medium and small scale high performance computing platforms. 
+In the context of scientific computing today, they are primarily used for post-hoc analysis. 
+Efforts are made to improve Big Data framework performance on supercomputers~\cite{PD11}. 
+High performance computers are more reliable than traditional Big Data platforms, thus softening the need for strong fault tolerance protocols that often limit Big Data frameworks performance and scalability. 
+Data parallel and functional programming techniques underlying the map/reduce model are also used in some modern visualization frameworks like vtk-m. 
+The map/reduce model has also been experimented with in the in situ context~\cite{WB15}.
+Success has been reported in using ML for optimizing HPC platforms, for instance in job scheduling~\cite{CC17}.
+
+
+\medskip\noindent
+\textbf{\sffamily Research Questions.} 
+Against this backdrop, we see the following immediate questions.
+\begin{enumerate}
+    \item How can one use ML for in situ data reduction?
+    \item How can ML techniques help users to formulate and/or optimize in situ workflows? 
+    \item How can in situ visualization be used to monitor and analyze deep learning algorithms~\cite{SG16}?
+    \item What guarantees can be provided on ML techniques when used in safety critical situations?
+    \item How can Big Data frameworks and their relatively easy to master programming environnements, in particular for stream processing, support or complement in situ processing frameworks?
+    \item More generally how can the knowledge that can be extracted through  machine learning / big data techniques help improve in situ analytics, visualization, and -- eventually -- HPC at large? 
+\end{enumerate}
+      
+Leveraging the additional tools and methodologies of  Big Data for in situ processing  may eventually enable researchers to do better science faster.  
+The push to use these tools may very likely come from application scientists.
+But how they will be integrated and used in situ is still unclear. 
 
 \begin{thebibliography}{0}
-\bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
-\bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
+\bibitem{GCC16}
+R. Grosman, Y. Chen, and P. Chun:
+\textsl{OpenCL Meets Open Source Streaming Analytics}
+In Proceedings of the International Workshop on OpenCL, 2016.
+%
+\bibitem{PD11}
+S. Plimpton and K. D. Devine: 
+{MapReduce in MPI for Large-Scale Graph Algorithms}, 
+Parallel Computing, 37:610-632, 2011.
+%
+\bibitem{WB15}
+Y. Wang, G. Agrawal, T. Bicer, and W. Jiang: 
+\textsl{Smart: a MapReduce-like framework for in-situ scientific analytics}
+In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, 2015.
+%
+\bibitem{SG16} 
+H. Strobelt, S. Gehrmann, B. Huber, H. Pfister, and A. M. Rush:
+\textsl{Visual Analysis of Hidden State Dynamics in Recurrent Neural Networks},http://arxiv.org/abs/1606.07461.
+%
+\bibitem{CC17}
+D. Carastan-Santos, R. Y. de Camargo:
+\textsl{Obtaining Dynamic Scheduling Policies with Simulation and Machine Learning}
+In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, 2017.
+%
+\bibitem{M16}
+J. Ming, et al.:
+\textsl{A Supervised Learning Framework for Arbitrary Lagrangian-Eulerian Simulations},
+In Proceedings of the IEEE International Conference on Machine Learning and Applications (ICMLA), 2016.
+%
+\bibitem{A18}
+Asch et al.: 
+\textsl{Big data and extreme-scale computing: Pathways to Convergence-Toward a shaping strategy for a future software and data ecosystem for scientific inquiry},
+The International Journal of High Performance Computing Applications, Vol. 32(4):435–479, 2018.
+%
+\bibitem{HH18}
+C.F. Higham and D.J. Higham:
+\textsl{Deep learning an introduction for mathematicians}, https://arxiv.org/abs/1801.05894.
 \end{thebibliography}
 
 

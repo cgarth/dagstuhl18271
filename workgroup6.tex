@@ -1,27 +1,75 @@
-
-\abstracttitle{Use Cases}
-\abstractauthor[Kenneth Moreland and Dirk Pleiter]{%
-Kenneth Moreland (...)\\
-Dirk Pleiter (...)
-}
+\abstracttitle{Use Cases Beyond Exploratory Analysis}
+\abstractauthor[Kate Isaacs / Alejandro Ribes Cortes]{%
+Kate Isaacs (...)\\
+Alejandro Ribes Cortes (...)}
 \license
 
-\textbf{\sffamily Participants:} ...
+\textbf{\sffamily Participants:} K. Isaacs, J. C. Bennett, A. Bauer, E. W. Bethel, C. Hansen, A. Ribes Cortes, K. Ono, N. Gauger, F. Sadlo
 
 \medskip\noindent
-\textbf{\sffamily Background and Motivation.} ...
-
-\medskip\noindent\textbf{\sffamily Research Questions.} 
-...
+\textbf{\sffamily Background and Motivation.}
+The focus of in situ analysis has largely been exploratory analysis of the output of a single large-scale simulation. 
+However, we see other use cases that will benefit from or even be critically enabled by in situ technology. 
+We identified several such use cases, including 
 \begin{enumerate}
-\item ...
-\item ...
-\item ...
+    \item support for ensembles, e.g., for uncertainty quantification and decision optimization;
+    \item computational steering;
+    \item  incorporation of other data sources, e.g., for data assimilation, data fusion, and model calibration; and
+    \item analysis of other data associated with the application such as algorithm convergence and machine performance. 
+\end{enumerate}
+These important topics have only received minimal attention so far. 
+
+Melissa and Sandia’s Slycat have done in situ processing of ensemble runs for uncertainty quantification.
+Melissa is a framework to manage simulation runs of ensembles~\cite{TRF17}. 
+At present, the largest experiment treated by Melissa comprised an ensemble of 80.000 parallel simulations; it avoided 288~TB of storage.
+Techniques from one-shot optimization, may help determine what parameters to explore next in ensemble runs~\cite{GGW16}.
+
+LBNL CAMERA's Xi-CAM~\cite{XiCAM} targets distributed workflows for visualization and analysis with a focus on experimental data as an additional data source, e.g., from the Advanced Light Source at LBNL or the Advanced Photon Source at ANL. 
+
+Performance analysis tools such as Vampir and Scalasca have handled execution traces (performance data) in an in situ manner for large scale simulation runs. Plasma fusion simulations have visualized performance data of run time, memory usage and other hardware usage, as well as data reductions to provide situational awareness of in situ performance analysis\cite{WOIV_2018}
+Such additional data sources, especially for the input and assimilation of experimental data, may require new mathematical methods and guarantees.
+Existing research on data assimilation techniques, such as using Kalman filters \cite{EVE09}, currently provide solutions using traditional post-hoc and file-based approaches. Adapting these techniques to an in-situ context remains a challenge
+
+Coupling the Uintah Framework~\cite{MHB12} with the VisIt toolkit allows scientists to perform parallel in situ visualization of runtime performance data and other ephemeral data. The coupling also provides the concept of a “simulation dashboard" which allows in situ computational steering and visual debugging.
+
+\medskip\noindent
+\textbf{\sffamily Research Questions.} 
+In addition to common in situ challenges like scaling and platform heterogenity, these use cases add questions with regard to the complexity of performing multiple use cases simultaneously, the added data wrangling of multiple use cases, the number of runs (ensemble use cases), the increased temporal constraints (coordination of ensembles, interactivity for human-in-the-loop steering, decision making time bounds), the added data movement (additional data sources), as well as the increased contention for the same resources among those multiple use cases.
+Specifically, the we need to find answers to the following questions
+\begin{enumerate}
+    \item How can we understand the constraints inside of which a solution must operate? 
+    \item What mathematical guarantees can we put on the resulting analyses?  This will critically hinge on successful collaborations between mathematicians and in situ specialists.
+    \item How can we bound its time and space complexities? This includes measures and models for how much complexity an in situ analysis adds to the overall process.
+    \item How can we develop workflows and abstractions that allow users to handle multiple simultaneous goals? This covers the aspect sof both the technical integration of multiple simultaneous workflows as well as the user interface implications regarding the control of such a complex system.
+    \item How can we scale support for ensembles of 1 billion representatives and beyond and enable an analysis of the resulting high-dimensional data space?
+    \item How can we develop robust multi-scale and multi-physics models that are suitable for reliable, reproducible science? Among other aspects, this requires effective data integration techniques, which may or may not be transferred from existing approaches designed for classical post hoc workflows.
 \end{enumerate}
 
+
 \begin{thebibliography}{0}
-\bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
-\bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
+\bibitem{TRF17} 
+T. Terraz, A. Ribes, Y. Fournier, B. Iooss, and B. Raffin:
+\textsl{Melissa: large scale in transit sensitivity analysis avoiding intermediate files.} 
+In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, 2017.
+%
+\bibitem{GGW16}
+S. Günther, N.R. Gauger and Q. Wang: 
+\textsl{Simultaneous One-shot optimization with unsteady PDEs}, 
+Journal of Computational and Applied Mathematics, (294), pp. 12-22, 2016.
+%
+\bibitem{XiCAM} \textsl{https://www.camera.lbl.gov/xi-cam-interface}
+%
+\bibitem{VOIV_2018} \textsl{ToDo!}
+%
+\bibitem{EVE09} 
+G. Evensen: 
+\textsl{Data assimilation: The Ensemble Kalman Filter}. 
+Springer Science \& Business Media; 2009.
+%
+\bibitem{MHB12} Q. Meng, A. Humphrey and M. Berzins: 
+\textsl{The uintah framework: a unified heterogeneous task scheduling and runtime system},
+SC Companion: High Performance Computing, Networking Storage and Analysis, 
+pp. 2441-2448, 2012.
 \end{thebibliography}
 
 

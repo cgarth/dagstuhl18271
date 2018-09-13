@@ -1,14 +1,47 @@
 \abstracttitle{Data Quality and Reduction}
 \abstractauthor[Peer-Timo Bremer, Han-Wei Shen]{%
-Peer-Timo Bremer (...)\\
-Han-Wei Shen (...)
+Peer-Timo Bremer (...), Han-Wei Shen (...)
 }
 \license
 
-Lorem ipsum
+\textbf{\sffamily Participants:} R. Westermann, T. Carrard, I. Hotz, C. Hansen, D. Pugmire, K. Heitmann, H. Yu, M. Hadwiger, J. Krüger, H.-W. Shen , S. Frey, C. Garth, V. Pascucci
+
+\wgpar{Background and Motivation.}
+The fundamental problem for large-scale computational experiments is that is infeasible to store all data generated during a run. The traditional solution is to subset data in time for permanent storage. This has worked well in most applications. However, as simulations become larger the ratio between what is computed and what can be save keeps increasing and especially for the bleeding edge simulations there now is a significant risk in losing crucial information. For example, it is often no longer possible to reliable track features \cite{DBLP:conf/ldav/Widanagamaachchi15} through time. 
+
+\wgpar{Research Questions.} 
+Consequently, new forms of data reduction are needed which induces new research questions and challenges:
+
+\begin{itemize}
+\item
+First, there is a large gamut of different reduction approaches with different characteristics. While there are many ways of classifying these one convenient axis is to consider the trade-off between generality and specificity. On one end of the spectrum are traditional data compression techniques that aim to preserve as much information of the original “signal” as possible given a hard limit on the acceptable data volume. These techniques are considered general as they by and large do not restrict and/or favor any particular downstream post-processing. A slightly more specific variant would be to compress and preserve only some of the data fields (i.e. only some primary variables) or to allocate more space to data considered more sensitive. Generically, the more specific a technique becomes, meaning the more a priori information one has about what is considered important, the more aggressively one is able to reduce the data. For example, knowing only a certain data range is important or even what particular post-processing will be used will allow more data to be discarded without impacting the results. At the other extreme of highly specific techniques are feature extraction approaches which directly target (a) specific research question(s). In the limit a scientist might only be interested in a single characteristic, i.e. global average temperature. Note that this specificity axes also loosely corresponds to the move from what is considered data compression, i.e. wavelets, to what is considered data analysis, i.e. feature extraction though there are may intermediate approaches that may not easily fit into either category.
+
+\item
+The second challenge is how to determine -- ideally a priory -- what amount of data reduction is acceptable and how to guarantee that this constraint is observed. Clearly, this question is highly application specific and it may not be possible to decide a priori which information might be necessary to produce new scientific insight. Furthermore, there exist a second trade-off between techniques aimed to answer specific scientific questions defined in advanced vs. the ability to explore data post-hoc to gain new insights and find the unexpected. This is especially challenging at the largest scales since there the need for data reduction is greatest, yet the chance of observing previously unknown phenomena is also greatest and thus the risk of missing a breakthrough by an overly prescriptive reduction scheme is high. 
+
+\item
+Third, there exists a wide variety of “basis functions” in which one may express information. These range from compression basis, i.e. wavelets, to statistical quantities, to trained models, or abstract feature descriptions. Each will have their own advantages and disadvantages in terms of ease of use, information density, computational costs, etc.
+
+\item
+Another generic challenge is to analyze temporal information since in virtually all cases this corresponds to simultaneously analyzing multiple timesteps concurrently. Generally, this is not possible in an in situ setting, as we rarely have enough memory available to maintain two let alone more time steps in the system. Therefore, time dependent analysis will virtually always start from reduced data and face the challenge that one must predict what might be interesting in the next step, i.e. whether a certain small scale undulation is noise to be ignored or the birth of a feature that will grow. 
+
+\item
+Finally, any data reduction will have to come with error bounds, verification, and guarantees on error propagation to be trusted by the scientists. It will be especially crucial to integrate with the necessary uncertainty quantification as well as to consider the effects of data reduction on downstream processing, i.e. statistics or machine learning.
+\end{itemize}
+
+\wgpar{Conclusion.}
+For all these issues the challenge is that there exist a vast number of use cases all with different constraints and characteristics and many of the crucial questions, i.e. what information must be preserved, are either not known at all or cannot be easily computed on-the-fly. Furthermore, many large scale codes actually support an entire community of scientist who would like to exploit the data to answer questions unrelated or even orthogonal to those of the team actually running the simulation. In these cases, a direction of inquiry may not even be known when one has to make the decision to permanently delete some information. In general, the data reduction must support the entire range of scientific endeavours from open ended exploration to checking explicit hypotheses. Yet both conditions may apply for different data consumers leading to opposing constraints.
+
+Progress in any of these challenges could greatly increase the value of any particular simulation and significantly reduce the number of repeats of the same (or similar) simulations to recover and/or explore previously unknown phenomena or ones not sufficiently captured on earlier attempts. 
+
+The existing body of work on in situ data reduction and compression is prevalently tailored to specific application use cases. It would be desirable to identify generic techniques that can support a large variety of use cases.
+% --------------------------------------------------------------------------
 
 \begin{thebibliography}{0}
-\bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
+\bibitem{DBLP:conf/ldav/Widanagamaachchi15} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
 \bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
 \end{thebibliography}
+
+% --------------------------------------------------------------------------
+
 

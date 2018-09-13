@@ -1,0 +1,14 @@
+\abstracttitle{Melissa: Large Scale In Transit Sensitivity Analysis}
+\abstractauthor[Bruno Raffin]{Bruno Raffin (INRIA -- Grenoble, bruno.raffin@inria.fr)}
+\license
+
+%\jointwork{}
+%\abstractref[http://dx.doi.org/1234.12/Doe.DOI.34]{Doe, John; Doe, Jane, Sample talk abstracts used for Dagstuhl Reports, Journal of Seminar Documentation, 1:8, pp.~34--78.}
+%\abstractrefurl{http://dx.doi.org/1234.12/Doe.DOI.34}
+
+Global sensitivity analysis is an important step for analyzing and validating numerical simulations. One classical approach consists in computing statistics on the outputs from well-chosen multiple simulation runs. Simulation results are stored to disk and statis- tics are computed postmortem. Even if supercomputers enable to run large studies, scientists are constrained to run low resolution simulations with a limited number of probes to keep the amount of intermediate storage manageable. In this paper we propose a file avoiding, adaptive, fault tolerant and elastic framework that enables high resolution global sensitivity analysis at large scale. Our approach combines iterative statistics and in transit process- ing to compute Sobol’ indices without any intermediate storage. Statistics are updated on-the-fly as soon as the in transit parallel server receives results from one of the running simulations. For one experiment, we computed the Sobol’ indices on 10M hexahedra and 100 timesteps, running 8000 parallel simulations executed in 1h27 on up to 28672 cores, avoiding 48TB of storage.
+
+%\begin{thebibliography}{0}
+%\bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
+%\bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
+%\end{thebibliography}

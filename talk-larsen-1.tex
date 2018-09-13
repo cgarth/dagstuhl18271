@@ -1,0 +1,14 @@
+\abstracttitle{Ascent: A Fly-Weight In Situ Visualization Framework}
+\abstractauthor[Matthew Larsen]{Matthew Larsen (LLNL -- Livermore, \textcolor{red}{EMAIL})}
+\license
+
+%\jointwork{}
+%\abstractref[http://dx.doi.org/1234.12/Doe.DOI.34]{Doe, John; Doe, Jane, Sample talk abstracts used for Dagstuhl Reports, Journal of Seminar Documentation, 1:8, pp.~34--78.}
+%\abstractrefurl{http://dx.doi.org/1234.12/Doe.DOI.34}
+
+A key trend in contemporary HPC hardware development is an increasing spread between compute performance on the one hand and I/O bandwidth and available system memory on the other. In this setting, classical post hoc analysis quickly become infeasible. With respect to these constraints, in situ strategies, which process data as it is being generated - thereby avoiding the I/O constraints - are widely regarded a necessity. However, in situ visualization presents a multitude of challenges and questions, including efficient execution on a variety of HPC infrastructures; dealing with unconventional data structures, particularly higher order elements; and making state of the art in situ methods readily accessible. To this end, Ascent is an in situ scientific visualization infrastructure for HPC physics simulation codes being developed as part of the US Department of Engergy's Exascale Computing Project (ECP). The infrastructure is designed for leading-edge supercomputers, and has support for both distributed- memory and shared-memory parallelism. It can take advantage of computing power on both conventional CPU architectures and on many-core architectures (e.g., NVIDIA GPUs or the Intel Xeon Phi). In addition to scientific visualization, Ascent also serves as vehicle to deploy custom analysis. We are interested in ideas related to using Ascent as a gateway to couple our HPC simulation codes to the large ecosystem of data science of tools. In support of this goal, we have demonstrated using Ascent for two powerful use cases that leverage data science capabilities on simulation data: 1) We used Ascent to couple data in situ from a simulation code to Python-based machine learning algorithms 2) We used Ascent to provide in situ access to simulation data for general consumption in a Python-based Jupyter Notebook There are many software engineering and data modeling challenges related to bridging HPC simulations and data science capabilities. From these successful demonstrations, we feel Ascent infrastructure's is uniquely prepared to help connect these worlds.
+
+%\begin{thebibliography}{0}
+%\bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
+%\bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
+%\end{thebibliography}

@@ -17,8 +17,9 @@ The style of the specification (procedural, declarative), level of detail requir
 
 Workflow specification is closely tied to workflow execution because the specification also implies the functions needed to be carried out by the workflow runtime engine to execute the workflow. Here, we focus on the specification from the end-user’s and developer’s perspective: how humans describe the workflow to the runtime and instrument (modify) tasks to operate within the workflow.
 
-Why is it challenging?
+\wgpar{Challenges.}
 An in situ workflow specification must address several factors. Some are common to other workflows such as distributed-area ones, but other factors are particularly relevant when tasks are combined in situ in an HPC system. The challenges that are particular to in situ workflows are as follows:
+
 \begin{itemize}
 \item Dynamic, data dependent behavior
 \item Space, time, resource, and priority constraints
@@ -27,6 +28,7 @@ Contingencies for unexpected behavior such as faults or resource unavailability
 \item Minimizing the level of intrusion when modifying tasks from standalone to in situ mode
 \end{itemize}
 
+\noindent
 Some post hoc distributed-area workflow systems such as Fireworks~\cite{Jain15} and Galaxy~\cite{Afgan11} are limited to a specific domain such as material science or biology. Others such as Pegasus~\cite{Deelman15} are generic. For in situ workflows, systems such as ADIOS~\cite{Boyuka14} are derived from storage systems, while SENSEI~\cite{Ayachit16} is derived from visualization. Decaf~\cite{Dreher17} and FlowVR~\cite{Dreher14} are dataflow layers for workflows whose data model is generic and not tied to storage or visualization, with the workflow graph being statically described in a Python script. Swift~\cite{Wozniak13}, in comparison, is a programming language that derives a workflow graph implicitly from the data dependencies in the program. COSS~\cite{Dorier17} is a contractual system primarily for storage models, however a similar idea may be applied to declarative workflow definitions in the future.
 
 \wgpar{Research Questions.}

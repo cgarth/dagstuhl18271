@@ -22,8 +22,8 @@
 
 \renewcommand{\doi}[1]{\href{http://dx.doi.org/#1}{doi: #1}}
 \renewcommand*{\bibfont}{\small\footnotesize}
-\defbibheading{bibliography}{\par\medskip\noindent{\normalsize\sffamily\bfseries References}\\\nopagebreak}
-
+\defbibheading{bibliography}{\par\vspace\bigskipamount\noindent{\normalsize\sffamily\bfseries References}\medskip\nopagebreak}
+\DeclareFieldFormat{labelnumberwidth}{\small\sffamily\bfseries#1}
 \addbibresource{main.bib}
 
 \subject{Report from Dagstuhl Seminar 18271}
@@ -112,6 +112,7 @@ Bernd Hentschel (RWTH Aachen University, hentschel@vr.rwth-aachen.de)
 
 % =============================================================================
 
+\pagebreak
 \section{Working Groups}
 \input{workgroup1}
 \input{workgroup2}

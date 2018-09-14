@@ -7,8 +7,9 @@ Dave Pugmire (Oak Ridge National Laboratory)
 
 \textbf{\sffamily Participants:} A. Bauer, EW Bethel, PT Bremer, M. Dorier, M. Hadwiger, C. Hansen, K. Heitmann, I. Hotz, J. Krueger, J. Patchett, K. Moreland, K. Ono, T. Peterka, D. Pleiter, B. Raffin, A. Ribes Cortes, N. Rober, U. R\"ude, F. Sadlo, H-W Shen, M. Srinivasan, G. Weber, R. Westermann, H. Yu
 
-\medskip\noindent
-\textbf{\sffamily Background and Motivation.}
+\begin{refsection}
+
+\wgpar{Background and Motivation.}
 Approaching the exascale will profoundly change the way we handle data within integrated, in situ systems. 
 Specific problems arise with respect to data models for both input and output data; increased resolution and/or the creation of large-scale ensembles; the inclusion of (streaming) experimental data; and the reliable execution of computational experiments.
 
@@ -31,18 +32,17 @@ While all these problems do have an in situ perspective, we are aware that sever
 
 To date, several efforts target the exchange of data between simulation codes and visualization exchange.
 From a conceptual point of view, theses efforts have in common that they try to provide a generic data model or an interface for the transformation from one model into another one.
-Conduit\cite{Conduit}, ADIOS~\cite{ADIOS}, and SENSEI~\cite{SENSEI} broadly fall into the first category, while the latter comprises, e.g., LibSim~\cite{LibSim} and Catalyst~\cite{Catalyst}.
+Conduit~\cite{Conduit}, ADIOS~\cite{Lofstead08}, and SENSEI~\cite{Ayachit16} broadly fall into the first category, while the latter comprises, e.g., LibSim~\cite{Whitlock11} and Catalyst~\cite{Fabian11}.
 
-A specific approach to address the need for common data structures are block-structured Adaptive Mesh Refinement (AMR) data~\cite{Berger1989}. 
+A specific approach to address the need for common data structures are block-structured Adaptive Mesh Refinement (AMR) data~\cite{Berger89}. 
 AMR uses a hierarchy of axis-aligned rectilinear grids, which are interchangeably called either boxes, patches, or subgrids. 
 These form the building blocks that represent the domain. These grids are ordered in a hierarchy of levels having increasing resolution, where data in finer levels replaces those in coarser levels. 
-Initial work on AMR visualization focused on converting AMR data to suitable conventional representations and then visualizing these, e.g.,~\cite{Norman1999}.
-While these first attempts converted the data into an unstructured mesh, later work focused on maintaining the AMR structure for direct and indirect volume rendering \cite{Wald2017, Wang2018, Weber2012} with a focus on defining smooth interpolation schemes, extracting isosurfaces without discontinuities at hierarchy level boundaries. and efficient parallel implementations.
+Initial work on AMR visualization focused on converting AMR data to suitable conventional representations and then visualizing these, e.g.,~\cite{Norman99}.
+While these first attempts converted the data into an unstructured mesh, later work focused on maintaining the AMR structure for direct and indirect volume rendering \cite{Wald17, Wang18, Weber2012} with a focus on defining smooth interpolation schemes, extracting isosurfaces without discontinuities at hierarchy level boundaries. and efficient parallel implementations.
 
 With respect to workflow systems, current implementations like Pegasus and Flux take a higher-level view of the data and provide a graph-based representation of the operations to be performed. These systems manage the dependencies, execution and resilience of executing the sequence of specified operations.
 
-\medskip\noindent
-\textbf{\sffamily Research Questions.} 
+\wgpar{Research Questions.} 
 The aforementioned challenges directly translate into the following set of research questions.
 
 \begin{enumerate}
@@ -57,60 +57,62 @@ The aforementioned challenges directly translate into the following set of resea
     The question then is how such descriptions should look like?
 \end{enumerate}
 
+\noindent
 We note that most of these questions are not specific to the exascale regime. 
 Yet, while pre-exascale setups will still allow some leeway, e.g., in terms of the level of integration or the, the arrival of exascale machines will put in situ techniques to their ultimate test.
 
 
-\begin{thebibliography}{0}
-\bibitem{Conduit} 
-... :
-\textsl{ToDo -- Conduit}, 
-.
-%
-\bibitem{ADIOS}% 
-J. F. Lofstead, S. Klasky, K. Schwan, N. Podhorszki, C. Jin: 
-\textsl{Flexible IO and Integration for Scientific Codes Through the Adaptable IO System (ADIOS)},
-In Proceedings of the ACM International Workshop on Challenges of Large Applications in Distributed Environments, pp. 15–24, 2008.
-%
-\bibitem{SENSEI}%
-U. Ayachit, B. Whitlock, M. Wolf, B. Loring, B. Geveci, D. Lonie, and E. Wes Bethel:
-\textsl{The SENSEI Generic In Situ Interface}, 
-In Proceedings of In Situ Infrastructures for Enabling Extreme-scale Analysis and Visualization (ISAV 2016, http://doi.org/10.1109/ISAV.2016.13, 2016.
-%
-\bibitem{LibSim}% 
-B. Whitlock, J. M. Favre, J. S. Meredith:
-\textsl{Parallel In Situ Coupling of Simulation with a Fully Featured Visualization System}
-In Proceedings of the EG Symposium on Parallel Graphics and Visualization, pp. 101–109, 2011.
-%
-\bibitem{Catalyst}% 
-N. Fabian, K. Moreland, D. Thompson, A. C. Bauer, P. Marion, B. Geveci, M. Rasquin, K. E. Jansen: 
-\textsl{The Paraview Coprocessing Library: A Scalable, General Purpose In Situ Visualization Library},
-In Proceedings of the IEEE Symposium on Large-Scale Data Analysis and Visualization (LDAV), pp. 89–96, 2011.
-%
-\bibitem{Berger1989}%
-M. Berger and P. Colella. 
-\textsl{Local Adaptive Mesh Refinement for Shock Hydrodynamics.} 
-Journal of Computational Physics, 82:64–84, 1989.
-%
-\bibitem{Norman1999}% 
-M. L. Norman, J. M. Shalf, S. Levy, and G. Daues: 
-\textsl{Diving Deep: Data Management and Visualization Strategies for Adaptive Mesh Refinement Simulations.} 
-Computing in Science and Engineering, 1(4):36–47, 1999.
-%
-\bibitem{Wald2017}% 
-I. Wald, C. Brownlee, W. Usher, A. Knoll: 
-\textsl{CPU Volume Rendering of Adaptive Mesh Refinement Data},
-In Proceedings of the ACM SIGGRAPH Asia Symposium on Visualization 2017.
-%
-\bibitem{Wang2018}% 
-F. Wang, I. Wald, Q. Wu, W. Usher, C. R. Johnson: 
-\textsl{CPU Iso-surface Ray Tracing of Adaptive Mesh Refinement Data}, 
-to appear - IEEE VIS 2018
-%
-\bibitem{Weber2012}%
-G. H. Weber, H. Childs, and J. S. Meredith: 
-\textsl{Efficient Parallel Extraction of Crack-free Isosurfaces from Adaptive Mesh Refinement (AMR) Data},
-In Proceedings of IEEE Symposium on Large Data Analysis and Visualization (LDAV) pp. 31–38, 2012.
-\end{thebibliography}
+%\begin{thebibliography}{0}
+%\bibitem{Conduit} 
+%... :
+%\textsl{ToDo -- Conduit}, 
+%.
+%%
+%\bibitem{ADIOS}% 
+%J. F. Lofstead, S. Klasky, K. Schwan, N. Podhorszki, C. Jin: 
+%\textsl{Flexible IO and Integration for Scientific Codes Through the Adaptable IO System (ADIOS)},
+%In Proceedings of the ACM International Workshop on Challenges of Large Applications in Distributed Environments, pp. 15–24, 2008.
+%%
+%\bibitem{SENSEI}%
+%U. Ayachit, B. Whitlock, M. Wolf, B. Loring, B. Geveci, D. Lonie, and E. Wes Bethel:
+%\textsl{The SENSEI Generic In Situ Interface}, 
+%In Proceedings of In Situ Infrastructures for Enabling Extreme-scale Analysis and Visualization (ISAV 2016, http://doi.org/10.1109/ISAV.2016.13, 2016.
+%%
+%\bibitem{LibSim}% 
+%B. Whitlock, J. M. Favre, J. S. Meredith:
+%\textsl{Parallel In Situ Coupling of Simulation with a Fully Featured Visualization System}
+%In Proceedings of the EG Symposium on Parallel Graphics and Visualization, pp. 101–109, 2011.
+%%
+%\bibitem{Catalyst}% 
+%N. Fabian, K. Moreland, D. Thompson, A. C. Bauer, P. Marion, B. Geveci, M. Rasquin, K. E. Jansen: 
+%\textsl{The Paraview Coprocessing Library: A Scalable, General Purpose In Situ Visualization Library},
+%In Proceedings of the IEEE Symposium on Large-Scale Data Analysis and Visualization (LDAV), pp. 89–96, 2011.
+%%
+%\bibitem{Berger1989}%
+%M. Berger and P. Colella. 
+%\textsl{Local Adaptive Mesh Refinement for Shock Hydrodynamics.} 
+%Journal of Computational Physics, 82:64–84, 1989.
+%%
+%\bibitem{Norman1999}% 
+%M. L. Norman, J. M. Shalf, S. Levy, and G. Daues: 
+%\textsl{Diving Deep: Data Management and Visualization Strategies for Adaptive Mesh Refinement Simulations.} 
+%Computing in Science and Engineering, 1(4):36–47, 1999.
+%%
+%\bibitem{Wald2017}% 
+%I. Wald, C. Brownlee, W. Usher, A. Knoll: 
+%\textsl{CPU Volume Rendering of Adaptive Mesh Refinement Data},
+%In Proceedings of the ACM SIGGRAPH Asia Symposium on Visualization 2017.
+%%
+%\bibitem{Wang2018}% 
+%F. Wang, I. Wald, Q. Wu, W. Usher, C. R. Johnson: 
+%\textsl{CPU Iso-surface Ray Tracing of Adaptive Mesh Refinement Data}, 
+%to appear - IEEE VIS 2018
+%%
+%\bibitem{Weber2012}%
+%G. H. Weber, H. Childs, and J. S. Meredith: 
+%\textsl{Efficient Parallel Extraction of Crack-free Isosurfaces from Adaptive Mesh Refinement (AMR) Data},
+%In Proceedings of IEEE Symposium on Large Data Analysis and Visualization (LDAV) pp. 31–38, 2012.
+%\end{thebibliography}
 
-
+\printbibliography
+\end{refsection}

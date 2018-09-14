@@ -8,6 +8,8 @@ David Pugmire (Oak Ridge National Laboratory)
 
 \textbf{\sffamily Participants:} C. Garth, D. Pugmire, T. Carrard, B. Muite, K. Moreland, U. Rüde, R. Sisneros, D. Pugmire, H. Yu, H.-W. Shen, G. Weber, I. Hotz, R. Westermann, J. Krüger, M. Hadwiger, P. Messmer
 
+\begin{refsection}
+
 \wgpar{Background and Motivation.} The utility of in situ visualization and analysis fundamentally hinges on the ability to respond to both the size, and nature of simulation data. In-place methods will need to efficiently utilize similar levels of concurrency as the mechanism for generation of the data (i.e. simulation), while in transit methods will need to dedicate enough computational power to process the transferred data. Further, algorithms must be able to operate on disparate data representations (e.g. higher order elements) in a memory efficient manner, and for in place methods particularly, must respect the sharing of resources.
 
 These requirements make in situ algorithm design and engineering challenging for the extremely concurrent architectures of the near future. The need for integration into and coupling to existing ecosystems, the presence of heterogeneous architectures as well as sharing of non-optimal or even unsuitable data structures provide a substantial challenge in obtaining efficient performance. As a consequence, some forms of analysis that are in widespread use today may not even be feasible for future problems.
@@ -32,7 +34,8 @@ We identify the following general research questions that are central to enginee
 
 Furthermore, a general understanding of the principles underlying these considerations would substantially ease the adaptation of techniques to new in situ scenarios as well as enable the development of new analysis strategies, thus increasing the productivity and robustness of computational science workflows.
 
-\wgpar{References.} TODO: add back in.
+\printbibliography
+\end{refsection}
 
 % \subsubsection*{What is the problem?}
 

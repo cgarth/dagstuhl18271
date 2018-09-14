@@ -10,7 +10,21 @@
 
 \newcommand\wgpar[1]{{\par\medskip\noindent\sffamily\bfseries{#1}}}
 
-\bibliographystyle{plain}%the recommnded bibstyle
+\usepackage[%
+	sorting=none, 
+	backend=biber,
+	style=ieee,
+    url=false, 
+    doi=true,
+    eprint=false,
+    isbn=false
+]{biblatex} % per-chapter bibliographies
+
+\renewcommand{\doi}[1]{\href{http://dx.doi.org/#1}{doi: #1}}
+\renewcommand*{\bibfont}{\small\footnotesize}
+\defbibheading{bibliography}{\par\medskip\noindent{\normalsize\sffamily\bfseries References}\\\nopagebreak}
+
+\addbibresource{main.bib}
 
 \subject{Report from Dagstuhl Seminar 18271}
 \title{In Situ Visualization for Computational Science}

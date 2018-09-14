@@ -1,16 +1,44 @@
-
 \abstracttitle{Workflow Execution}
 \abstractauthor[Hank Childs and John Patchett]{%
-??? (...)\\
-??? (...)
+Hank Childs (University of Oregon, hank@uoregon.edu)\\
+John Patchett (Los Alamos National Laboratories, patchett@lanl.gov)
 }
 \license
 
-Lorem ipsum
+\wgpar{Participants:} J. Patchett, H. Childs, A. Bauer, P.-T. Bremer, T. Carrard, M. Dorier, C. Garth, K. Heitmann, K. Moreland, T. Peterka, D. Pleiter, D. Pugmire, N. Röber
 
-\begin{thebibliography}{0}
-\bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
-\bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
-\end{thebibliography}
+\textcolor{red}{FIXME: Several references missing in this section.}
+\begin{refsection}
 
+\wgpar{Background and Motivation.} 
+The fundamental challenge for workflow execution is to be able to execute a workflow specification.  This challenge involves deriving the set of tasks to execute, scheduling those tasks including the hardware resources the tasks will use, managing invocation and execution of the software that carries out the tasks, and handling error conditions from small to large.
+This problem spans multiple granularities.  A coarse example could involve scheduling distinct binaries that exchange data via the file system or a network connection.  A finer example could involve coordinating modules within a single binary.
 
+This topic is challenging for many reasons.
+One challenge is that the workflow specifications may be quite complex.  For example, they may include hierarchical graphs, graphs that evolve dynamically over time, or event-driven workflows.  Workflow specifications also must consider a rich set of use cases, including multiple types of programs, data exchanges, etc., and it can be quite difficult to support all of these use cases.
+Another challenge involves scheduling workflow tasks onto resources.  First, the available resources are often variable, which complicates workflow scheduling with dynamic allocation.  It is not always the case new resources can be allocated when needed, and so workflow execution needs to be capable of dealing with a lag in obtaining new resources.  Second, the resources needed may be variable.  It is important that workflows can be elastic in their usage of the resources, i.e., adapt resource usage across tasks dynamically to speed up the overall workflow.  Finally, the penalty for allocating sub-optimally can be quite large.  If one task is given insufficient resources, then it can become a bottleneck for the entire workflow, leading to significant delays.
+A third challenge focuses around portability.  Supercomputers increasingly have heterogeneous hardware, and workflow execution may need to be able to schedule on different types of hardware, and be composed of software that can run on different types of hardware.  Execution environments differ as well, ranging from the high-level paradigm (e.g., task-based) to programming environment (MPI, OpenMP, etc).  Workflow execution must be flexible with this respect.  A final type of portability involves data models, ranging from linking between distinct physics codes (i.e., remapping in a volume preserving way) to the ability to map from the data model of one program to another.
+
+% Successes to date
+Most of the community successes have come as smaller contributions to a specific domain.
+The scientific visualization tools ParaView, VisIt, and EnSight all employ client-server models.  With these tools, the visualization algorithms execute in parallel on the server, and then transfer the resulting geometric primitives to a client for interactive rendering.  To do this, they needed aspects of a workflow, including co-allocation of resources and data exchange.  Through their in situ interfaces, these tools also can do computational steering.  An example of this comes with the Uintah code, which has interfaced with LibSim and allows LibSim to set parameters that affect Uintah’s execution.
+ADIOS approached this by interfacing with simulation codes through the I/O layer.  When simulation codes attempt to write through the ADIOS API calls, data is sometimes transferred to distinct resources where additional analysis can occur.  ADIOS also supports running distinct binaries on the same resources as the simulation.  Damaris, a middleware for efficient I/O on HPC simulations, also can facilitate visualization, again in a variety of configurations.
+Henson has focused on workflows within the same binary.  Their main abstractions are position-independent executables and co-routines.  Through these abstractions, Henson allows arbitrary analysis code to run alongside a simulation.
+Decaf is a dataflow system for the parallel communication of coupled tasks in an HPC workflow.   It can be used to forward data from distinct processes, as well as redistributing data.  It also can be used within a program to form a task-based computing environment.  Decaf has been demonstrated in situ in several settings on HPC systems.  Other notable examples of workflow systems include Fireworks \cite{Jain15} and Galaxy \cite{Afgan11}, which are limited to a specific domain such as material science or biology, Melissa, for the analysis of ensembles, and Pegasus, which is generic.  Workflows also can be specified as programming languages, such as Swift, which creates workflow graphs from data dependencies in a program.
+
+\wgpar{Research Questions.} 
+There are multiple open research questions in workflow execution:
+\begin{enumerate}
+\item	
+A primary question deals with finding the right strategies that balance flexibility and efficiency.  A related question involve finding the right abstractions.  In particular, the tasks that the workflow manages should likely be neither too coarse (not enough opportunity to optimize) or too fine (too much to manage).   Hierarchical graphs may allow for the best of both worlds.  On the efficiency side, it is important to understand how to dynamically (elastically) adapt resource usage on the fly.  On the flexibility side, reliability and effective fault tolerance are still open questions. 
+\item
+One question revolves around data interfaces.  While it is often possible to link the data format from one program to another, an interface that captures the data formats of many programs is much harder.  One approach is to create an interface that describes a data model, and have each program convert their internal structures to the data model.  Another approach is to focus on passing arrays, and then separately pass a scheme that conveys the meaning of each array.
+\item
+Finally, excellent research in workflows is happening outside the visualization community.  In some cases, the questions above are about understanding the unique requirements for visualization and analysis and adapting existing solutions to deal with these requirements.
+\end{enumerate}
+
+\wgpar{Conclusion.} 
+Workflows can help in multiple ways.  One outcome is improved resource utilization. The may occur via adapting execution to make sure all resources are used or via fault tolerance and ensuring work that has already occurred is not lost.  Another possible benefit for resource utilization is that the modularization provided by workflows can enable algorithms to run on the hardware where they are most effective. Another outcome is optimizing people effort.  Workflows can spare end users from having to master nuances of HPC systems (by encoding these nuances in the workflow execution) and can also spare development time via reduced complexity (although there is an overhead to incorporate a workflow in the first place).  
+
+\printbibliography
+\end{refsection}

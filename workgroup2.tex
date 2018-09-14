@@ -1,16 +1,55 @@
-
 \abstracttitle{Workflow Specification}
 \abstractauthor[Tom Peterka and Madhusudhanan Srinivasan]{%
-Tom Peterka (...)\\
-Madhusudhanan Srinivasan (...)
+Tom Peterka (Argonne National Laboratory, tpeterka@mcs.anl.gov)\\
+Madhusudhanan Srinivasan (KAUST, madhu.srinivasan@kaust.edu.sa)
 }
 \license
 
-Lorem ipsum
+\wgpar{Participants:} M. Parashar, P.-T. Bremer, K. Heitmann, M. Larsen, J. Patchett, T. Peterka, M. Srinivasan, N. Röber, S. Frey, B. Raffin
 
-\begin{thebibliography}{0}
-\bibitem{dagrep-manual} Schloss Dagstuhl -- Editorial Office,\textsl{The dagrep class}. Schloss Dagstuhl, Germany, 2011.
-\bibitem{dagrep-sample} John Q. Open; Joan R. Access, \textsl{Seminar Sample}, Dagstuhl Reports, 1:1, 1--8, 2011.
-\end{thebibliography}
+\begin{refsection}
 
+%What is the problem [from the point of view of in situ]?
+\wgpar{Background \& Motivation.}
+The problem of workflow specification is to specify the in situ discovery process as a composition of different tools and applications (tasks): What are the inputs and outputs of each task? When and where should a task execute? What resources are needed by each task?
+
+The style of the specification (procedural, declarative), level of detail required (detailed, abstract),  degree of problem domain specificity (domain-specific, generic), and the modification of the individual tasks (level of intrusion) are aspects of all of the above questions.
+
+Workflow specification is closely tied to workflow execution because the specification also implies the functions needed to be carried out by the workflow runtime engine to execute the workflow. Here, we focus on the specification from the end-user’s and developer’s perspective: how humans describe the workflow to the runtime and instrument (modify) tasks to operate within the workflow.
+
+Why is it challenging?
+An in situ workflow specification must address several factors. Some are common to other workflows such as distributed-area ones, but other factors are particularly relevant when tasks are combined in situ in an HPC system. The challenges that are particular to in situ workflows are as follows:
+\begin{itemize}
+\item Dynamic, data dependent behavior
+\item Space, time, resource, and priority constraints
+Contingencies for unexpected behavior such as faults or resource unavailability
+\item Balance between generic and domain-specific abstractions
+\item Minimizing the level of intrusion when modifying tasks from standalone to in situ mode
+\end{itemize}
+
+Some post hoc distributed-area workflow systems such as Fireworks~\cite{Jain15} and Galaxy~\cite{Afgan11} are limited to a specific domain such as material science or biology. Others such as Pegasus~\cite{Deelman15} are generic. For in situ workflows, systems such as ADIOS~\cite{Boyuka14} are derived from storage systems, while SENSEI~\cite{Ayachit16} is derived from visualization. Decaf~\cite{Dreher17} and FlowVR~\cite{Dreher14} are dataflow layers for workflows whose data model is generic and not tied to storage or visualization, with the workflow graph being statically described in a Python script. Swift~\cite{Wozniak13}, in comparison, is a programming language that derives a workflow graph implicitly from the data dependencies in the program. COSS~\cite{Dorier17} is a contractual system primarily for storage models, however a similar idea may be applied to declarative workflow definitions in the future.
+
+\wgpar{Research Questions.}
+The following research questions require further study:
+
+\begin{enumerate}
+\item	
+Defining dynamic, data dependent, or system dependent behavior. How do we specify how the workflow should adapt when conditions change? Examples of workflow changes range from the amount of resources allocated to existing tasks to topological changes in the workflow graph when tasks begin and end. Sources of workflow changes are twofold: data behaviors may warrant a workflow change (e.g., a feature appears), or system behaviors may force a change (e.g., a compute node becomes unresponsive).
+\item 
+Defining data behaviors that drive workflow dynamics. How are features, patterns, or statistics of the data described, and how are the resultant workflow actions described?
+\item 
+Specifying space, time, resource, and priority constraints. In situ workflows are constrained by having to share resources among more than one task. This means that space and time constraints on resources need to listed in some way. Moreover, it is unlikely that all constraints can be satisfied, meaning that constraints need to be prioritized. Such priorities also need to be defined in the workflow specification.
+\item 
+Contingencies for unexpected behavior such as faults or resource unavailability. Even after data and system behaviors have been defined, constrained, and prioritized, execution may not proceed as planned. Resources may become temporarily unavailable, fail altogether, or results may be corrupted. Contingency plans may need to be specified ahead of time (as part of workflow specification) if faults should be handled in custom ways.
+\item 
+Balance between generic and domain-specific abstractions. The level of abstraction at which all of the above definitions are specified is an open question. Some workflow systems are limited to a specific domain while others are quite generic. However, no systems define all of the above behaviors, and going forward, the appropriate level of abstraction remains to be studied. Multiple levels of abstraction (domain-specific data behaviors, system-specific machine behaviors, generic constraints and priorities) have not been studied at all to the best of our knowledge.
+\item 
+Balance between declarative and procedural workflow specification. As in single applications, traditionally procedural methods have been used in the past, defining workflows in terms of tasks and their connections. Going forward, more concise declarative methods may be appropriate and easier to use, with the workflow system converting the user’s declarations into workflow procedures. One example is the specification of data contracts defining input and output data models, from which the system builds a workflow automatically (similar to SQL database language).
+\end{enumerate}
+
+\wgpar{Conclusion.}
+A concise and easy to use workflow specification interface has many advantages. The first is workflow execution. Because of its close relationship with the runtime execution engine, a well-defined, concise method of description facilitates efficient execution. Conversely, poorly designed abstractions can lead to unreliable implementations. User productivity is another benefit. We postulate that end users (i.e., application scientists) can make better use of their own time as well as their resources when a workflow automates in situ tasks. However, this hypothesis only holds when the workflow specification is intuitive, easy to use, and affords a clear mapping between the scientist’s mental model of the workflow and its formal description. The third gain comes from reuse of the workflow. A formal workflow specification enables replication of computational experiments, facilitating verification, validation, and scientific  reproducibility. Moreover, similar workflows can be defined by editing the specification of an existing workflow rather than starting over. The fourth asset is collaboration and communication. The workflow specification can be shared among researchers and used for training the next generation of data and domain scientists.
+
+\printbibliography
+\end{refsection}
 

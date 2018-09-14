@@ -3,26 +3,41 @@
 \subsubsection{Panelists}
 
 \begin{itemize}
-\item Joan R. Access (Dummy Affilliation, DC)
-\item Jane Doe (Somewhere University, DC)
-\item John Q. Open (Dummy University Computing Laboratory, DC)
+\item Peer-Timo Bremer (Lawrence Livermore NationalLaboratory, bremer5@llnl.gov)
+\item Charles D. Hansen (University of Utah, hansen@cs.utah.edu)
+\item Ingrid Hotz (Linköping University, ingrid.hotz@liu.se)
+\item Bruno Raffin (INRIA -- Grenoble, bruno.raffin@inria.fr)
+\item Alejandro Ribes Cortes (EDF -- Paris, alejandro.ribes@edf.fr)
+\item Han-Wei Shen (Ohio State University -- Columbus, shen.94@osu.edu)
 \end{itemize}
 
-\subsubsection{Statements}
+\subsubsection{Summary Discussion on Programmatic \& Funding Issues}
 
-\paragraph{Joan R. Access}
+\textbf{Background and Motivation}: In a research-to-development pipeline, funding for the various stages of software development is often provided by multiple different funding agencies, each with very different “success criteria”.  For example, many of the funding sources that promote in situ tools research are focused on theory and may relegate software development activities to prototypes only. However, user communities often require mature and reliable software, and their associated funding sources typically do not support software development and user support.  Commercialization and collaborations with large corporations are other means of funding an in situ research-to-production pipeline.
 
-This is the statement of Joan R. Access.
+\textbf{Challenges}: One of the predominant challenges identified by attendees is the dearth of sustained funding sources for software development, testing, and deployment activities aimed at bringing fundamental research tools into a production-quality state.  As noted above, there are distinct funding agencies that support both the in situ tools and user communities.  However, each of these funding agencies’ success criteria are narrowly focused within their respective communities.  Those funding sources aimed at bridging communities are few, and often transient in nature (limited duration).  Those that provide more sustained funding are focused on very narrow user communities (e.g., DOE/NNSA/ASC funding).  
 
-\paragraph{Jane Doe}
+Workshop attendees also noted some disconnects between funding program manager priorities and  the priorities of in situ tools researchers.  Some funding agencies have moved away from a focused emphasis on in situ processing, and are now looking to invest in newer research trends, such as machine learning and big data.  This is in large part due to the hype and public appeal surrounding these trends in industry.  However, this also highlights a potential communication disconnect between the in situ tools community and funding agency program managers on the importance of continued investment in an in situ research-to-production pipeline.
 
-And this is the statement of Jane Doe.
+While commercialization and collaboration with industry are another source of funding, many workshop participants noted that non-disclosure agreement (NDA) requirements are often in direct conflict with fundamental tools researcher goals of publishing their research. 
 
-\paragraph{John Q. Open}
+Lastly, some in situ tools researchers noted difficulty in gaining access to high performance computing resources on HPC systems for user support build and test development operations efforts.
 
-John Q. Open -- believe it or not -- also gave a statement.
+\textbf{Potential Solutions}: We begin this section by highlighting some early success stories in addressing  funding issues:
+ \begin{itemize}
+\item \textbf{HPC resource allocation}:  In the United States,  HPC resource allocation may be easier than it appears at some HPC facilities. Many in situ tools researchers do not pursue resource allocation because acquisition processes appear to be targeted solely at application developers.  Although not well-advertised, there are compute cycles available to the tools communities and tools researchers have been successful in acquiring compute cycles by directly contacting facilities support staff to better understand request protocol options.
+\begin{itemize}
+\item  \textbf{Institution-specific success stories}:
+\begin{itemize}
+\item KAUST University has a support model for software development and deployment.   Research faculty can work with software developers who are paid by the University to mature research tools into production capabilities.  
+\item EDF was highlighted as a company who funds work that spans the in situ research-to-production pipeline.  
+\end{itemize}
+\end{itemize}
+\item \textbf{Recent changes to funding agency reporting criteria}: Some academic and fundamental research funding agencies have made changes to their reporting/success criteria. Specifically, the agencies are beginning to ask about data artifacts and software sustainability plans.  While additional funding is not being provided to support these activities, this is an important first step in that direction.
+\end{itemize}
 
-\subsubsection{Discussion}
-
-The statements have been heavily discussed. Next time, John Doe should join the panelists.
-
+In addition to early successes, suggestions for path forward highlight the need for increased alignment between in situ pipeline researchers and potential funding sources:
+ \begin{itemize}
+\item \textbf{Academic and/or government funding agencies}: Academic researchers do not always have a clear understanding of a funding agency’s program manager roles and responsibilities (which may differ significantly across agencies).  Researchers could benefit from an understanding of funding agency terminology (e.g., technology readiness level (TRL) [cite Wiki] to describe software maturity in a standardized way).  A deeper, understanding of a funding agency’s own success criteria and requirements would enable researchers to help shape a program manager’s research focus, as well as to help program managers  advocate for additional  funding for their programs.
+ \item \textbf{Industry collaborations}:  As we establish a research-to-production pipeline, it is clear that the community has not yet identified which universal, baseline services industry partners should develop and maintain.  For example, BLAS was highlighted as a former fundamental research activity that HPC industry providers now maintain across HPC system procurements.  What is the analogous BLAS for the in situ tools community? How should the in situ tools community identify this division of labor with industry partners?
+\end{itemize}

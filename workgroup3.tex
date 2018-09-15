@@ -5,9 +5,8 @@ John Patchett (Los Alamos National Laboratories, patchett@lanl.gov)
 }
 \license
 
-\wgpar{Participants:} J. Patchett, H. Childs, A. Bauer, P.-T. Bremer, T. Carrard, M. Dorier, C. Garth, K. Heitmann, K. Moreland, T. Peterka, D. Pleiter, D. Pugmire, N. Röber
+\wgpar{Contributors:} J. Patchett, H. Childs, A. Bauer, P.-T. Bremer, T. Carrard, M. Dorier, C. Garth, K. Heitmann, K. Moreland, T. Peterka, D. Pleiter, D. Pugmire, N. Röber
 
-\textcolor{red}{FIXME: Several references missing in this section.}
 \begin{refsection}
 
 \wgpar{Background and Motivation.} 
@@ -22,7 +21,7 @@ A third challenge focuses around portability.  Supercomputers increasingly have 
 % Successes to date
 Most of the community successes have come as smaller contributions to a specific domain.
 The scientific visualization tools ParaView, VisIt, and EnSight all employ client-server models.  With these tools, the visualization algorithms execute in parallel on the server, and then transfer the resulting geometric primitives to a client for interactive rendering.  To do this, they needed aspects of a workflow, including co-allocation of resources and data exchange.  Through their in situ interfaces, these tools also can do computational steering.  An example of this comes with the Uintah code, which has interfaced with LibSim and allows LibSim to set parameters that affect Uintah’s execution.
-ADIOS approached this by interfacing with simulation codes through the I/O layer.  When simulation codes attempt to write through the ADIOS API calls, data is sometimes transferred to distinct resources where additional analysis can occur.  ADIOS also supports running distinct binaries on the same resources as the simulation.  Damaris, a middleware for efficient I/O on HPC simulations, also can facilitate visualization, again in a variety of configurations.
+ADIOS~\cite{Lofstead08} approached this by interfacing with simulation codes through the I/O layer.  When simulation codes attempt to write through the ADIOS API calls, data is sometimes transferred to distinct resources where additional analysis can occur.  ADIOS also supports running distinct binaries on the same resources as the simulation.  Damaris, a middleware for efficient I/O on HPC simulations, also can facilitate visualization, again in a variety of configurations.
 Henson has focused on workflows within the same binary.  Their main abstractions are position-independent executables and co-routines.  Through these abstractions, Henson allows arbitrary analysis code to run alongside a simulation.
 Decaf is a dataflow system for the parallel communication of coupled tasks in an HPC workflow.   It can be used to forward data from distinct processes, as well as redistributing data.  It also can be used within a program to form a task-based computing environment.  Decaf has been demonstrated in situ in several settings on HPC systems.  Other notable examples of workflow systems include Fireworks \cite{Jain15} and Galaxy \cite{Afgan11}, which are limited to a specific domain such as material science or biology, Melissa, for the analysis of ensembles, and Pegasus, which is generic.  Workflows also can be specified as programming languages, such as Swift, which creates workflow graphs from data dependencies in a program.
 

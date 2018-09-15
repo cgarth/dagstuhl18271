@@ -1,42 +1,43 @@
 \abstracttitle{Cost Models}
 \abstractauthor[Robert Sisneros and Christoph Garth]{%
-Robert Sisneros (...)\\
-Christoph Garth (TU Kaiserslautern)
+Robert Sisneros (University of Illinois at Urbana-Champaign, sisneros@illinois.edu)\\
+Christoph Garth (Technische Universität Kaiserslautern, garth@cs.uni-kl.de)
 }
 \license
 
-\textbf{\sffamily Participants:} D. Pugmire, R. Sisneros, T. Carrard, S. Frey, M. Larsen, K. Isaacs, N. Gauger, B. Muite, C. Garth
+\wgpar{Contributors:} D. Pugmire, R. Sisneros, T. Carrard, S. Frey, M. Larsen, K. Isaacs, N. Gauger, B. Muite, C. Garth
 
-\medskip\noindent
-\textbf{\sffamily Background and Motivation.}
+\begin{refsection}
+\wgpar{Background and Motivation.}
 Cost models play a role for several topics fundamental to both simulations as well as in situ frameworks, including data reduction and quality, workflows, and algorithms.  
 For many domains, the ability to estimate costs is even prerequisite to the approval or initiation of efforts. 
 The creation of cost models, through performance modeling or alternative methods, offers clear benefit in the efficient implementation and application of in situ frameworks in that it serves to place bounds on the uncertainty introduced by performing in situ analysis and visualization. 
 The simulations for which we deploy in situ data analysis and visualization approaches commonly have associated cost models, e.g. we expect application developers to understand the resource requirements of their applications.  
 However, extending a particular cost model to incorporate even the deployment of a specific in situ method is likely to present significant challenges.  That is, an in situ method presents many potential impacts to a simulation: increased run time, additional memory requirements, higher power consumption, etc.
 
-The typical challenges associated with creating a cost model for any application apply here as well. 
+\wgpar{Challenges.} The typical challenges associated with creating a cost model for any application apply here as well. 
 While we may readily describe a cost model’s parameter space the process of sampling and benchmarking this is onerous.  
 This is compounded by the existence of multiple relevant hardware configurations and the fact that in many cases architectural factors may have non-linear effects, are hard to quantify, or be entirely provisional.  
 These issues are magnified for in situ approaches as a cost model parameter space must incorporate hardware considerations as well as two independent, diverse applications (the visualization/analysis method to be run in situ and the simulation itself).  
 The problem is further exacerbated in that an in situ framework may be composed of multiple algorithms, and visualization algorithms exhibit a strong data dependency.
 
+\wgpar{Successes.}
 As stated above, cost models are common across many domains.   
 Here, we focus on recent in situ visualization work.  
-Larsen et al. employ a half analytical, half empirical approach to model performance of raycast volume rendering~\cite{LHKPMH13}. 
+Larsen et al. employ a half analytical, half empirical approach to model performance of raycast volume rendering~\cite{Larsen16}. 
 The authors leverage a priori knowledge of acceleration structures and fixed costs (e.g. shading) and use stratified sampling to adequately cover parameter space.  
 That work also models performance across hardware configurations, mainly CPU vs. GPU performance.  
 
-There is also work in workstation-specific performance modeling leveraging both online learning and offline models~\cite{Steffens_paper}, as well as a general study toward understanding all factors, including cost models, contributing to an overall simulation campaign~\cite{KPKC16}.
-Damaris, a middleware with in situ capabilities proposes methods to fit in situ algorithms within time~\cite{DSPAS13} or performance~\cite{DSGPORAB16} constraints.
+There is also work in workstation-specific performance modeling leveraging both online learning and offline models~\cite{Bruder17}, as well as a general study toward understanding all factors, including cost models, contributing to an overall simulation campaign~\cite{Kress16}.
+Damaris, a middleware with in situ capabilities proposes methods to fit in situ algorithms within time~\cite{Dorier13} or performance~\cite{Dorier16} constraints.
 Finally, we believe the body of work dedicated to dynamic load balancing over clusters may help determine where to start both in terms of successes as well as current inadequacies for our problem.  
 For instance, we may leverage the concepts of work stealing schemes that utilize simple cost models to determine the bases upon which transfer of work takes place.  
 Conversely, many assumptions in such work are likely insufficient for our purposes such as work items being constant-time or elements being constant-order (transition from low to higher order elements may profoundly impact in situ algorithms).
 
 
-\medskip\noindent
-\textbf{\sffamily Research Questions.} 
+\wgpar{Research Questions.} 
 The following general research questions are those we have identified as critical in progressing toward future incorporation of robust cost models for in situ data analysis and visualization.
+
 \begin{enumerate}
     \item What are goals for cost models? What are the rules of thumb for selection vs. granularity vs. resolution?
     \item What is the required accuracy of cost models?  Is there a precedent for requiring very accurate models and in particular how important are the upper and lower bounds when using cost models?
@@ -50,35 +51,12 @@ The following general research questions are those we have identified as critica
     \item How do we validate cost models?
 \end{enumerate}
 
+\noindent
 At a high level, in situ cost models contribute to a scientists’ ability to plan full science campaigns.  
 Predicting how much in situ analysis will impact the sim code, e.g. during on-node co-processing, allows for balancing requirements, prioritizing results, or dialing in appropriate timeliness or accuracy.  
 On the operational level, prediction capabilities help ensure that an in situ method will run within a pre-determined resource envelope.
 
-
-\begin{thebibliography}{0}
-\bibitem{LHKPMH13}%
-M. Larsen, C. Harrison, J. Kress, D. Pugmire, J. Meredith, H. Childs: 
-\textsl{Performance Modeling of In Situ Rendering}, International Conference for High Performance Computing, Networking, Storage and Analysis, 2016.
-%
-\bibitem{KPKC16}
-J. Kress, D. Pugmire, S. Klasky, H. Childs:
-\textsl{Visualization and Analysis Requirements for in situ processing for a large-scale fusion simulation code},
-In Proceedings of the Workshop on In Situ Infrastructures for Enabling Extreme-Scale Analysis and Visualization (ISAV), 2016.
-%
-\bibitem{Steffens_paper}
-...
-\textsl{ToDo -- Steffen's Paper???}
-...
-%
-\bibitem{DSPAS13}% 
-M. Dorier, R. Sisneros, T. Peterka, G. Antoniu, and D. Semeraro: 
-\textsl{Damaris/viz: a nonintrusive, adaptable and user-friendly in situ visualization framework},
-In Proceedings of the IEEE Symposium on Large-Scale Data Analysis and Visualization (LDAV), pp. 67-75, 2013.
-%
-\bibitem{DSGPORAB16} 
-M. Dorier, R. Sisneros, L. B. Gomez, T. Peterka, L. Orf, L. Rahmani, G. Antoniu, and L. Bouge:
-\textsl{Adaptive performance-constrained in situ visualization of atmospheric simulations},
-In Proceedings of the IEEE International Conference on Cluster Computing (CLUSTER), pp. 269-278, 2016.    
-\end{thebibliography}
+\printbibliography
+\end{refsection}
 
 

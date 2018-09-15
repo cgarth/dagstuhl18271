@@ -5,7 +5,7 @@ Dave Pugmire (Oak Ridge National Laboratory)
 }
 \license
 
-\textbf{\sffamily Participants:} A. Bauer, EW Bethel, PT Bremer, M. Dorier, M. Hadwiger, C. Hansen, K. Heitmann, I. Hotz, J. Krueger, J. Patchett, K. Moreland, K. Ono, T. Peterka, D. Pleiter, B. Raffin, A. Ribes Cortes, N. Rober, U. R\"ude, F. Sadlo, H-W Shen, M. Srinivasan, G. Weber, R. Westermann, H. Yu
+\wgpar{Contributors:} A. Bauer, E. W. Bethel, P.-T. Bremer, M. Dorier, M. Hadwiger, C. Hansen, K. Heitmann, I. Hotz, J. Krueger, J. Patchett, K. Moreland, K. Ono, T. Peterka, D. Pleiter, B. Raffin, A. Ribes Cortes, N. Rober, U. R\"ude, F. Sadlo, H-W Shen, M. Srinivasan, G. Weber, R. Westermann, H. Yu
 
 \begin{refsection}
 
@@ -30,6 +30,7 @@ Finally, we anticipate that effectively executing computational experiments in t
 
 While all these problems do have an in situ perspective, we are aware that several aspects are not genuinely driven by the in situ paradigm; in fact, topics like ensemble visualization and uncertainty quantification have been worked on outside the context of large-scale data visualization for years.
 
+\wgpar{Successes.}
 To date, several efforts target the exchange of data between simulation codes and visualization exchange.
 From a conceptual point of view, theses efforts have in common that they try to provide a generic data model or an interface for the transformation from one model into another one.
 Conduit~\cite{Conduit}, ADIOS~\cite{Lofstead08}, and SENSEI~\cite{Ayachit16} broadly fall into the first category, while the latter comprises, e.g., LibSim~\cite{Whitlock11} and Catalyst~\cite{Fabian11}.
@@ -38,7 +39,7 @@ A specific approach to address the need for common data structures are block-str
 AMR uses a hierarchy of axis-aligned rectilinear grids, which are interchangeably called either boxes, patches, or subgrids. 
 These form the building blocks that represent the domain. These grids are ordered in a hierarchy of levels having increasing resolution, where data in finer levels replaces those in coarser levels. 
 Initial work on AMR visualization focused on converting AMR data to suitable conventional representations and then visualizing these, e.g.,~\cite{Norman99}.
-While these first attempts converted the data into an unstructured mesh, later work focused on maintaining the AMR structure for direct and indirect volume rendering \cite{Wald17, Wang18, Weber2012} with a focus on defining smooth interpolation schemes, extracting isosurfaces without discontinuities at hierarchy level boundaries. and efficient parallel implementations.
+While these first attempts converted the data into an unstructured mesh, later work focused on maintaining the AMR structure for direct and indirect volume rendering \cite{Wang19,Wald17,Weber12} with a focus on defining smooth interpolation schemes, extracting isosurfaces without discontinuities at hierarchy level boundaries. and efficient parallel implementations.
 
 With respect to workflow systems, current implementations like Pegasus and Flux take a higher-level view of the data and provide a graph-based representation of the operations to be performed. These systems manage the dependencies, execution and resilience of executing the sequence of specified operations.
 

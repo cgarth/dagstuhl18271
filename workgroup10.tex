@@ -1,17 +1,19 @@
 
 \abstracttitle{In Situ for the Masses}
 \abstractauthor[John Patchett and E. Wes Bethel]{%
-John Patchett (Los Alamos National Laboratory)\\
-E. Wes Bethel (Lawrence Berkeley National Laboratory)
+John Patchett (Los Alamos National Laboratory, patchett@lanl.gov)\\
+E. Wes Bethel (Lawrence Berkeley National Laboratory, ewbethel@lbl.gov)
 }
 \license
 
-\textbf{\sffamily Participants:} E. W. Bethel, J. Patchett, P. Messmer, M. Parashar, A. Bauer, M. Srinivasan, K. Ono, N. Röber, N. Gauger, J. Bennett, F. Sadlo, M. Dorier, M. Larsen, A. Ribes Cortes
+\wgpar{Contributors:} E. W. Bethel, J. Patchett, P. Messmer, M. Parashar, A. Bauer, M. Srinivasan, K. Ono, N. Röber, N. Gauger, J. Bennett, F. Sadlo, M. Dorier, M. Larsen, A. Ribes Cortes
 
-\medskip\noindent
-\textbf{\sffamily Background and Motivation.}
+\begin{refsection}
+
+\wgpar{Background and Motivation.}
 The group identified three core problems crosscutting software complexity, heterogeneity and user facing issues: in situ software is complex and hard to use; users are reluctant to adopt new technologies and in particular in situ; and increasing heterogeneity in computational resources, software tools, and use scenarios exacerbates the problem. 
 
+\wgpar{Challenges.}
 In situ software is complex and hard to use. 
 Doing in situ methods by definition entails coupling two or more codes together, both of which are likely complex software applications in their own rights. 
 This coupling is more complex than simply making a library call, because of the consumer-side factors: the in situ method must be correctly configured to produce the desired results and it may itself be a complex, parallel application. 
@@ -28,15 +30,16 @@ Another challenge area is the fact that many users may be unwilling, or reluctan
 They are concerned about uncertainties around software lifespan and support, the software complexity, coupled with uncertainty about whether the software will solve their problem, whether it computes correct results, and its reliability and potential adverse impact on their high-concurrency, long-running simulation. 
 Users are unwilling to invest time and energy into adopting a new technology unless there are clear benefits to them, and they have a well founded belief that the new technology they adopt will be around in the future for them.
 
+\wgpar{Successes.}
 A Eurographics 2016 State-of-the-Art report STAR report~\cite{Bauer16} provides a comprehensive discourse of in situ R\&D that goes back over 20 years. 
-Notably, there are a number of established APIs that target the coupling of simulation and in situ visualization codes~\cite{Fabian2011, Whitlock2011, Ayachit16a, Ayachit16b, Larsen17}.
+Notably, there are a number of established APIs that target the coupling of simulation and in situ visualization codes~\cite{Fabian11, Whitlock11, Ayachit16, Ayachit16a, Larsen17}.
 One of the long-standing weaknesses of in situ approaches is the idea they produce results, i.e., images, that reflect a given combination of visualization and rendering parameters, and the collection of output is then not amenable to exploratory analysis.
 CINEMA\cite{Ahrens14} is an approach where in situ visualization tools create a ``CINEMA image database'', such that the images may span some range of visualization and/or rendering parameters, and then a post-hoc viewer permits a user to interact with and browse the collection of pre-computed images. 
 Other work in this space includes generating topological summaries for higher-level, feature-based analysis and exploration~\cite{Biedert15}. 
 
 Reasons why users might be more motivated to engage with the in situ community is if such engagement provides more value to their project. 
-One example is that it may save them user time in examining results and performing planning for future runs~\cite{Patchett2018}. 
-Another may be that it enables them to see and study new science hidden in their data, features that had previously gone undiscovered due to limitations of the I/O bottleneck~\cite{Ruebel2016}, or to perform complex simulation/analysis couplings where the analysis methods consist of combinations of lower-resolution surrogate model codes and advanced geometric/topological analysis methods~\cite{Morozov16}. 
+One example is that it may save them user time in examining results and performing planning for future runs~\cite{Patchett18}. 
+Another may be that it enables them to see and study new science hidden in their data, features that had previously gone undiscovered due to limitations of the I/O bottleneck~\cite{Rubel16}, or to perform complex simulation/analysis couplings where the analysis methods consist of combinations of lower-resolution surrogate model codes and advanced geometric/topological analysis methods~\cite{Morozov16}. 
 Helping users to become better aware of the technologies and how they might be used is an important part of the landscape, as well. 
 
 \medskip\noindent
@@ -61,60 +64,63 @@ Better science results from having access to full spatio-temporal resolution dat
 Productivity increases when there is faster turnaround between hypothesis formation, experiment, and analysis of results. 
 Reducing complexity, including lowering barriers to use, will result in increased user demand and adoption. 
 
-\begin{thebibliography}{0}
-    \bibitem{Ahrens14}
-    J. Ahrens et al.:
-    \textsl{An image-based approach to extreme scale in situ visualization and analysis} 
-    In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis. IEEE Press, 2014.
-    %
-    \bibitem{Ayachit16a}
-    U. Ayachit, B. Whitlock, M. Wolf, B. Loring, B. Geveci, D. Lonie, and E. Wes Bethel:
-    \textsl{The SENSEI Generic In Situ Interface}, 
-    In Proceedings of In Situ Infrastructures for Enabling Extreme-scale Analysis and Visualization (ISAV 2016, http://doi.org/10.1109/ISAV.2016.13, 2016.
-    %
-    \bibitem{Ayachit16b} 
-    U. Ayachit, A. Bauer, E. P. N. Duque, G. Eisenhauer, N. Ferrier, J. Gu, K. Jansen, B. Loring, Z. Lukić, S. Menon, D. Morozov, P. O’Leary, M. Rasquin, C. P. Stone, V. Vishwanath, G. H. Weber, B. Whitlock, M. Wolf, K. J. Wu, and E. W. Bethel:
-    \textsl{Performance Analysis, Design Considerations, and Applications of Extreme-scale In Situ Infrastructures}
-    In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, 2016.
-    %
-    \bibitem{Bauer16}
-    A. C. Bauer, H. Abbasi, J. Ahrens, H.  Childs, B. Geveci, S. Klasky, K. Moreland et al.: 
-    \textsl{In situ methods, infrastructures, and applications on high performance computing platforms}
-    In Computer Graphics Forum, 35(3):577-597. 2016.
-    %
-    \bibitem{Biedert15}
-    T. Biedert and C. Garth:
-    \textsl{Contour tree depth images for large data visualization}
-    In Proceedings of the EG Symposium on Parallel Graphics and Visualization, 2015.
-    %
-    \bibitem{Fabian2011}% 
-    N. Fabian, K. Moreland, D. Thompson, A. C. Bauer, P. Marion, B. Geveci, M. Rasquin, K. E. Jansen: 
-    \textsl{The Paraview Coprocessing Library: A Scalable, General Purpose In Situ Visualization Library},
-    In Proceedings of the IEEE Symposium on Large-Scale Data Analysis and Visualization (LDAV), pp. 89–96, 2011.
-    %
-    \bibitem{Patchett2018}
-    J. Patchett and J. Ahrens:
-    \textsl{Optimizing Scientist Time through In Situ Visualization and Analysis},
-    IEEE Computer Graphics and Applications 38(1):119-127, 2018.
-    %
-    \bibitem{Larsen17}
-    M. Larsen, J. Ahrens, U. Ayachit, E. Brugger, H. Childs, B. Geveci, and C. Harrison:
-    \textsl{The ALPINE In Situ Infrastructure: Ascending from the Ashes of Strawman}
-    In Proceedings of In Situ Infrastructures for Enabling Extreme-Scale Analysis and Visualization (ISAV 2017), 2017. 
-    %
-    \bibitem{Morozov16}
-    D. Morozov and Z. Lukic: 
-    \textsl{Master of Puppets: Cooperative Multitasking for In Situ Processing} In Proceedings of the Symposium on High-Performance Parallel and Distributed Computing (HPDC), 2016.
-    %
-    \bibitem{Ruebel2016}
-    O. Rübel, B. Loring, J. L. Vay, D. P. Grote, R. Lehe, S. Bulanov, H. Vincenti, and E. W. Bethel:
-    \textsl{WarpIV: In Situ Visualization and Analysis of Ion Accelerator Simulations}
-    IEEE Computer Graphics and Applications 36(3):22-–35, 2016.
-    %
-    \bibitem{Whitlock2011}% 
-    B. Whitlock, J. M. Favre, J. S. Meredith:
-    \textsl{Parallel In Situ Coupling of Simulation with a Fully Featured Visualization System}
-    In Proceedings of the EG Symposium on Parallel Graphics and Visualization, pp. 101–109, 2011.
-\end{thebibliography}
+%\begin{thebibliography}{0}
+%    \bibitem{Ahrens14}
+%    J. Ahrens et al.:
+%    \textsl{An image-based approach to extreme scale in situ visualization and analysis} 
+%    In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis. IEEE Press, 2014.
+%    %
+%    \bibitem{Ayachit16a}
+%    U. Ayachit, B. Whitlock, M. Wolf, B. Loring, B. Geveci, D. Lonie, and E. Wes Bethel:
+%    \textsl{The SENSEI Generic In Situ Interface}, 
+%    In Proceedings of In Situ Infrastructures for Enabling Extreme-scale Analysis and Visualization (ISAV 2016, http://doi.org/10.1109/ISAV.2016.13, 2016.
+%    %
+%    \bibitem{Ayachit16b} 
+%    U. Ayachit, A. Bauer, E. P. N. Duque, G. Eisenhauer, N. Ferrier, J. Gu, K. Jansen, B. Loring, Z. Lukić, S. Menon, D. Morozov, P. O’Leary, M. Rasquin, C. P. Stone, V. Vishwanath, G. H. Weber, B. Whitlock, M. Wolf, K. J. Wu, and E. W. Bethel:
+%    \textsl{Performance Analysis, Design Considerations, and Applications of Extreme-scale In Situ Infrastructures}
+%    In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, 2016.
+%    %
+%    \bibitem{Bauer16}
+%    A. C. Bauer, H. Abbasi, J. Ahrens, H.  Childs, B. Geveci, S. Klasky, K. Moreland et al.: 
+%    \textsl{In situ methods, infrastructures, and applications on high performance computing platforms}
+%    In Computer Graphics Forum, 35(3):577-597. 2016.
+%    %
+%    \bibitem{Biedert15}
+%    T. Biedert and C. Garth:
+%    \textsl{Contour tree depth images for large data visualization}
+%    In Proceedings of the EG Symposium on Parallel Graphics and Visualization, 2015.
+%    %
+%    \bibitem{Fabian2011}% 
+%    N. Fabian, K. Moreland, D. Thompson, A. C. Bauer, P. Marion, B. Geveci, M. Rasquin, K. E. Jansen: 
+%    \textsl{The Paraview Coprocessing Library: A Scalable, General Purpose In Situ Visualization Library},
+%    In Proceedings of the IEEE Symposium on Large-Scale Data Analysis and Visualization (LDAV), pp. 89–96, 2011.
+%    %
+%    \bibitem{Patchett2018}
+%    J. Patchett and J. Ahrens:
+%    \textsl{Optimizing Scientist Time through In Situ Visualization and Analysis},
+%    IEEE Computer Graphics and Applications 38(1):119-127, 2018.
+%    %
+%    \bibitem{Larsen17}
+%    M. Larsen, J. Ahrens, U. Ayachit, E. Brugger, H. Childs, B. Geveci, and C. Harrison:
+%    \textsl{The ALPINE In Situ Infrastructure: Ascending from the Ashes of Strawman}
+%    In Proceedings of In Situ Infrastructures for Enabling Extreme-Scale Analysis and Visualization (ISAV 2017), 2017. 
+%    %
+%    \bibitem{Morozov16}
+%    D. Morozov and Z. Lukic: 
+%    \textsl{Master of Puppets: Cooperative Multitasking for In Situ Processing} In Proceedings of the Symposium on High-Performance Parallel and Distributed Computing (HPDC), 2016.
+%    %
+%    \bibitem{Ruebel2016}
+%    O. Rübel, B. Loring, J. L. Vay, D. P. Grote, R. Lehe, S. Bulanov, H. Vincenti, and E. W. Bethel:
+%    \textsl{WarpIV: In Situ Visualization and Analysis of Ion Accelerator Simulations}
+%    IEEE Computer Graphics and Applications 36(3):22-–35, 2016.
+%    %
+%    \bibitem{Whitlock2011}% 
+%    B. Whitlock, J. M. Favre, J. S. Meredith:
+%    \textsl{Parallel In Situ Coupling of Simulation with a Fully Featured Visualization System}
+%    In Proceedings of the EG Symposium on Parallel Graphics and Visualization, pp. 101–109, 2011.
+%\end{thebibliography}
+
+\printbibliography	
+\end{refsection}
 
 

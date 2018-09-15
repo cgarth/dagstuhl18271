@@ -1,10 +1,10 @@
 \abstracttitle{Use Cases Beyond Exploratory Analysis}
 \abstractauthor[Kate Isaacs / Alejandro Ribes Cortes]{%
-Kate Isaacs (...)\\
-Alejandro Ribes Cortes (...)}
+Kate Isaacs (University of Arizona, kisaacs@cs.arizona.edu)\\
+Alejandro Ribes Cortes (EDF - Paris, alejandro.ribes@edf.fr)}
 \license
 
-\textbf{\sffamily Participants:} K. Isaacs, J. C. Bennett, A. Bauer, E. W. Bethel, C. Hansen, A. Ribes Cortes, K. Ono, N. Gauger, F. Sadlo
+\wgpar{Contributors:} K. Isaacs, J. C. Bennett, A. Bauer, E. W. Bethel, C. Hansen, A. Ribes Cortes, K. Ono, N. Gauger, F. Sadlo
 
 \begin{refsection}
 
@@ -20,21 +20,21 @@ We identified several such use cases, including
 \end{enumerate}
 These important topics have only received minimal attention so far. 
 
+\wgpar{Successes.}
 Melissa and Sandia’s Slycat have done in situ processing of ensemble runs for uncertainty quantification.
 Melissa is a framework to manage simulation runs of ensembles~\cite{Terraz17}. 
 At present, the largest experiment treated by Melissa comprised an ensemble of 80.000 parallel simulations; it avoided 288~TB of storage.
 Techniques from one-shot optimization, may help determine what parameters to explore next in ensemble runs~\cite{Gunther15}.
 
-LBNL CAMERA's Xi-CAM~\cite{XiCAM} targets distributed workflows for visualization and analysis with a focus on experimental data as an additional data source, e.g., from the Advanced Light Source at LBNL or the Advanced Photon Source at ANL. 
+LBNL CAMERA's Xi-CAM~\cite{Pandolfi18} targets distributed workflows for visualization and analysis with a focus on experimental data as an additional data source, e.g., from the Advanced Light Source at LBNL or the Advanced Photon Source at ANL. 
 
-Performance analysis tools such as Vampir and Scalasca have handled execution traces (performance data) in an in situ manner for large scale simulation runs. Plasma fusion simulations have visualized performance data of run time, memory usage and other hardware usage, as well as data reductions to provide situational awareness of in situ performance analysis \cite{WOIV_2018}.
+Performance analysis tools such as Vampir and Scalasca have handled execution traces (performance data) in an in situ manner for large scale simulation runs. Plasma fusion simulations have visualized performance data of run time, memory usage and other hardware usage, as well as data reductions to provide situational awareness of in situ performance analysis.
 Such additional data sources, especially for the input and assimilation of experimental data, may require new mathematical methods and guarantees.
 Existing research on data assimilation techniques, such as using Kalman filters \cite{Eversen09}, currently provide solutions using traditional post-hoc and file-based approaches. Adapting these techniques to an in-situ context remains a challenge
 
 Coupling the Uintah Framework~\cite{Meng12} with the VisIt toolkit allows scientists to perform parallel in situ visualization of runtime performance data and other ephemeral data. The coupling also provides the concept of a “simulation dashboard" which allows in situ computational steering and visual debugging.
 
-\medskip\noindent
-\textbf{\sffamily Research Questions.} 
+\wgpar{Research Questions.} 
 In addition to common in situ challenges like scaling and platform heterogenity, these use cases add questions with regard to the complexity of performing multiple use cases simultaneously, the added data wrangling of multiple use cases, the number of runs (ensemble use cases), the increased temporal constraints (coordination of ensembles, interactivity for human-in-the-loop steering, decision making time bounds), the added data movement (additional data sources), as well as the increased contention for the same resources among those multiple use cases.
 Specifically, the we need to find answers to the following questions
 \begin{enumerate}

@@ -1,4 +1,5 @@
 \abstracttitle{Cost Models}
+\label{sec:costModels}
 \abstractauthor[Robert Sisneros and Christoph Garth]{%
 Robert Sisneros (University of Illinois at Urbana-Champaign, sisneros@illinois.edu)\\
 Christoph Garth (Technische Universität Kaiserslautern, garth@cs.uni-kl.de)
@@ -11,13 +12,13 @@ Christoph Garth (Technische Universität Kaiserslautern, garth@cs.uni-kl.de)
 \wgpar{Background and Motivation.}
 Cost models play a role for several topics fundamental to both simulations as well as in situ frameworks, including data reduction and quality, workflows, and algorithms.  
 For many domains, the ability to estimate costs is even prerequisite to the approval or initiation of efforts. 
-The creation of cost models, through performance modeling or alternative methods, offers clear benefit in the efficient implementation and application of in situ frameworks in that it serves to place bounds on the uncertainty introduced by performing in situ analysis and visualization. 
-The simulations for which we deploy in situ data analysis and visualization approaches commonly have associated cost models, e.g. we expect application developers to understand the resource requirements of their applications.  
+Creating a cost model, through performance modeling or alternative methods, facilitates the efficient implementation and application of in situ frameworks in that it serves to place bounds on the uncertainty introduced by performing in situ analysis and visualization. 
+The simulations for which we deploy in situ data analysis and visualization approaches commonly have associated cost models, i.e. we expect application developers to understand the resource requirements of their applications.  
 However, extending a particular cost model to incorporate even the deployment of a specific in situ method is likely to present significant challenges.  That is, an in situ method presents many potential impacts to a simulation: increased run time, additional memory requirements, higher power consumption, etc.
 
 \wgpar{Challenges.} The typical challenges associated with creating a cost model for any application apply here as well. 
 While we may readily describe a cost model’s parameter space the process of sampling and benchmarking this is onerous.  
-This is compounded by the existence of multiple relevant hardware configurations and the fact that in many cases architectural factors may have non-linear effects, are hard to quantify, or be entirely provisional.  
+This is compounded by the existence of multiple relevant hardware configurations and the fact that in many cases architectural factors may have non-linear effects, which are hard to quantify, or be entirely provisional.  
 These issues are magnified for in situ approaches as a cost model parameter space must incorporate hardware considerations as well as two independent, diverse applications (the visualization/analysis method to be run in situ and the simulation itself).  
 The problem is further exacerbated in that an in situ framework may be composed of multiple algorithms, and visualization algorithms exhibit a strong data dependency.
 
@@ -41,7 +42,7 @@ The following general research questions are those we have identified as critica
 \begin{enumerate}
     \item What are goals for cost models? What are the rules of thumb for selection vs. granularity vs. resolution?
     \item What is the required accuracy of cost models?  Is there a precedent for requiring very accurate models and in particular how important are the upper and lower bounds when using cost models?
-    \item How should a cost model interact with in situ taxonomy, specifically that put forth in the in situ terminology project?  Should cost models be constrained to the taxonomy and/or should the taxonomy be simplified to help ensure this?
+    \item How should a cost model interact with an in situ taxonomy, specifically that put forth in the in situ terminology project?  Should cost models be constrained to the taxonomy and/or should the taxonomy be simplified to help ensure this?
     \item What is the full set of parameters across hardware, simulation, in situ routine, data movement, load imbalance, data dependencies, etc. that we should consider?  What are ways in which we may reduce this set?
     \item What are the useful abstractions for applications vs. analysis and should we consider multiple cost models in the event of differing sets of abstractions?
     \item What role do “substitute” models play?  Are reduced-order models appropriate or are there benefits of a multi-resolution approach?
@@ -52,9 +53,9 @@ The following general research questions are those we have identified as critica
 \end{enumerate}
 
 \noindent
-At a high level, in situ cost models contribute to a scientists’ ability to plan full science campaigns.  
+At a high level, in situ cost models contribute to a scientist’s ability to plan full science campaigns.  
 Predicting how much in situ analysis will impact the sim code, e.g. during on-node co-processing, allows for balancing requirements, prioritizing results, or dialing in appropriate timeliness or accuracy.  
-On the operational level, prediction capabilities help ensure that an in situ method will run within a pre-determined resource envelope.
+At the operational level, prediction capabilities help ensure that an in situ method will run within a pre-determined resource envelope.
 
 \printbibliography
 \end{refsection}

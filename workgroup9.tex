@@ -12,18 +12,18 @@ Benson Muite (University of Tartu, benson.muite@ut.ee)
 \wgpar{Background and Motivation.}
 Due to the fact that this topic is based on two rapidly evolving fields, an appropriate definition and scoping are still in development~\cite{Asch18}. 
 Big Data as a domain has developed its own solutions for machine architectures, software frameworks, and also specific methodologies for data processing, e.g., the map/reduce model or stream processing, descriptive statistics and predictive statistics such as machine learning (ML) algorithms and in particular the subset of ML, deep learning (DL). 
-We believe that it is too narrow to only list popular Big Data frameworks such as Spark, Hadoop, Flink, and to compare them to MPI or PGAS languages used in high performance computing.
+We believe that it is too narrow to only list popular Big Data frameworks such as Spark, Hadoop, and Flink, and to compare them to MPI or PGAS languages used in high performance computing.
 Instead, identifying a set of candidate use cases and applications to experiment with different aspects of a future convergence will enable better evaluation of the potential and limitations of each approach. 
 A key problem is to understand how Big Data processing approaches can be used for in situ visualization and vice versa, i.e.~explore whether in situ solutions can find relevant applications in a Big Data context.
 Big Data is associated with machine learning, in particular neural networks. 
 ML techniques have been successful for addressing a number of classification/optimization problems. 
-How these techniques could be used efficiently in an in situ context still needs to be explored, with the an important question being the identification of the data that needs to be extracted to enable learning.  
+How these techniques could be used efficiently in an in situ context still needs to be explored, with an important question being the identification of the data that needs to be extracted to enable learning.  
 Many machine learning approaches can take a long time to be trained, usually with offline data. 
-Thus, other techniques from optimization should also be considered to enable real time in situ processing by coupling fast algorithms with fast implementations.
+Thus, other optimization techniques should also be considered to enable real time in situ processing by coupling fast algorithms with fast implementations.
 
 Another area of interest is co-design for in situ big data analysis. 
-In cases of key interest (such as in transit analysis of telecommunication network data~\cite{Grosman16}, dedicated hardware is often used, and experiences from the in situ case can be used to aid this co design.  
-Many high performance computing centers, under user requests, now need to provision frameworks such as Spark, Hadoop, Flink on high performance computing hardware. 
+In cases of key interest (such as in transit analysis of telecommunication network data~\cite{Grosman16}), dedicated hardware is often used, and experiences from the in situ case can be used to aid this co design.  
+Many high performance computing centers, under user requests, now need to provision frameworks such as Spark, Hadoop, and Flink on high performance computing hardware. 
 In Situ processing can leverage this trend to experiment and integrate Big Data solutions in workflows. 
 At present, in situ visualization has primarily focused on visualizing results of continuum mechanics simulations.
 Links to other communities with different types of streaming data that cannot be stored to disk may help in the development of new techniques and workflows~\cite{Asch18,Grosman16}.
@@ -38,9 +38,9 @@ ML and more particularly DL are black box solutions.
 Given enough high quality data for learning, they can automatically produce good solutions without requiring the hand development of a complex model.
 However, the  computed surrogate model is often difficult to understand and the guarantees on its qualities are limited. 
 In many cases this may not be acceptable. 
-A surrogate model produced by ML may be used in an in situ workflow, for instance for feature tracking, but also for designing and optimizing in situ workflows. 
+ML may be used in an in situ workflow, for instance for feature tracking, but also for designing and optimizing in situ workflows. 
 Such a task is often  difficult, with very limited tools to assist the developer, often left to rely only on his experience and expertise. 
-ML could be an interesting tool to address this issue.
+%ML could be an interesting tool to address this issue.
 
 Many big data workflows have been ported to HPC hardware and are available for users, in particular on medium and small scale high performance computing platforms. 
 In the context of scientific computing today, they are primarily used for post-hoc analysis. 

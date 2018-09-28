@@ -15,7 +15,7 @@ The group identified three core problems crosscutting software complexity, heter
 
 \wgpar{Challenges.}
 In situ software is complex and hard to use. 
-Doing in situ methods by definition entails coupling two or more codes together, both of which are likely complex software applications in their own rights. 
+Coupling in situ software entails coupling two or more codes together, both of which are likely complex software applications in their own rights. 
 This coupling is more complex than simply making a library call, because of the consumer-side factors: the in situ method must be correctly configured to produce the desired results and it may itself be a complex, parallel application. 
 In all but the simplest of cases, the data models of the simulation code and in situ method will not be identical.
 This necessitates a potentially complex data model transformation.
@@ -28,14 +28,15 @@ This set of challenges is compounded when considering portability: a given confi
 
 Another challenge area is the fact that many users may be unwilling, or reluctant, to adopt and use in situ methods/infrastructure. 
 They are concerned about uncertainties around software lifespan and support, the software complexity, coupled with uncertainty about whether the software will solve their problem, whether it computes correct results, and its reliability and potential adverse impact on their high-concurrency, long-running simulation. 
-Users are unwilling to invest time and energy into adopting a new technology unless there are clear benefits to them, and they have a well founded belief that the new technology they adopt will be around in the future for them.
+Users are unwilling to invest time and energy into adopting a new technology unless there are clear benefits to them, and they have a well-founded belief that the new technology they adopt will be around in the future for them.
 
 \wgpar{Successes.}
 A Eurographics 2016 State-of-the-Art report STAR report~\cite{Bauer16} provides a comprehensive discourse of in situ R\&D that goes back over 20 years. 
-Notably, there are a number of established APIs that target the coupling of simulation and in situ visualization codes~\cite{Fabian11, Whitlock11, Ayachit16, Ayachit16a, Larsen17}.
+Notably, there are a number of established APIs that target the coupling of simulation and in situ visualization codes~\cite{Fabian11, Whitlock11, Ayachit16, Ayachit16a,Docan2012,Larsen17}.
 One of the long-standing weaknesses of in situ approaches is the idea they produce results, i.e., images, that reflect a given combination of visualization and rendering parameters, and the collection of output is then not amenable to exploratory analysis.
 CINEMA\cite{Ahrens14} is an approach where in situ visualization tools create a ``CINEMA image database'', such that the images may span some range of visualization and/or rendering parameters, and then a post-hoc viewer permits a user to interact with and browse the collection of pre-computed images. 
 Other work in this space includes generating topological summaries for higher-level, feature-based analysis and exploration~\cite{Biedert15}. 
+%The DataSpaces~\cite{Docan2012} provides more general programming  abstractions and runtime services to support code coupling and in-situ workflows.
 
 Reasons why users might be more motivated to engage with the in situ community is if such engagement provides more value to their project. 
 One example is that it may save them user time in examining results and performing planning for future runs~\cite{Patchett18}. 
